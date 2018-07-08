@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{0ACB991B-95B9-454B-B609-CD534B04DE7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myApp", "myApp\myApp.csproj", "{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ACB991B-95B9-454B-B609-CD534B04DE7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACB991B-95B9-454B-B609-CD534B04DE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACB991B-95B9-454B-B609-CD534B04DE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACB991B-95B9-454B-B609-CD534B04DE7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CC4E94F-0C0E-4523-AB27-2EBCF08760F3}
+	EndGlobalSection
+EndGlobal

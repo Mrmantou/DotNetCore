@@ -16,6 +16,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+#vs  vscode
+.vs/
+.vscode/
+
 # Roslyn cache directories
 *.ide/
 
