@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{EE858C34-DBCD-4258-9F01-8D9E38A9811B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{0DD63AD6-6D91-41DB-A7BC-3D7A26526039}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE858C34-DBCD-4258-9F01-8D9E38A9811B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE858C34-DBCD-4258-9F01-8D9E38A9811B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE858C34-DBCD-4258-9F01-8D9E38A9811B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE858C34-DBCD-4258-9F01-8D9E38A9811B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {217A76B4-6BC1-4A93-A966-F962E761043A}
+	EndGlobalSection
+EndGlobal
