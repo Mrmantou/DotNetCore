@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{0ACB991B-95B9-454B-B609-CD534B04DE7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning", "MachineLearning\MachineLearning.csproj", "{0ACB991B-95B9-454B-B609-CD534B04DE7C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myApp", "myApp\myApp.csproj", "{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{4A207C6A-EFD6-4F22-998E-F63FA99777EC}"
+	ProjectSection(SolutionItems) = preProject
+		机器学习笔记.md = 机器学习笔记.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

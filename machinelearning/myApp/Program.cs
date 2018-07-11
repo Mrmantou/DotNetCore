@@ -7,6 +7,11 @@ using Microsoft.ML.Transforms;
 
 namespace myApp
 {
+    /// <summary>
+    /// Get started with ML.NET
+    /// https://www.microsoft.com/net/learn/apps/machine-learning-and-ai/ml-dotnet/get-started/windows
+    /// ML.Net 学习
+    /// </summary>
     class Program
     {
         // STEP 1: Define your data structures
