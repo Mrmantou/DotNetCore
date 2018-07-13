@@ -7,10 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachineLearning", "MachineL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myApp", "myApp\myApp.csproj", "{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{4A207C6A-EFD6-4F22-998E-F63FA99777EC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Document", "01 Document", "{4A207C6A-EFD6-4F22-998E-F63FA99777EC}"
 	ProjectSection(SolutionItems) = preProject
 		机器学习笔记.md = 机器学习笔记.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Classification", "Classification", "{CE04D6FA-C23E-4C04-9DBC-B26EE4F7C2A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Regression", "Regression", "{551DAA02-6A4B-4FB3-88BC-77CBBD00AE6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clustering", "Clustering", "{71105D5C-BCF8-462D-ACD0-0BCA2E54FA10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentimentAnalysis", "SentimentAnalysis\SentimentAnalysis.csproj", "{ACEDC5DB-BB05-4329-954F-F799E31BCB93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +34,16 @@ Global
 		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DD1EBF2-CAE8-40A4-A114-290F009F07BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACEDC5DB-BB05-4329-954F-F799E31BCB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACEDC5DB-BB05-4329-954F-F799E31BCB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACEDC5DB-BB05-4329-954F-F799E31BCB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACEDC5DB-BB05-4329-954F-F799E31BCB93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ACEDC5DB-BB05-4329-954F-F799E31BCB93} = {CE04D6FA-C23E-4C04-9DBC-B26EE4F7C2A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CC4E94F-0C0E-4523-AB27-2EBCF08760F3}
