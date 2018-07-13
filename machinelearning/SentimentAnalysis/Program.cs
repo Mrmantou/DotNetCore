@@ -19,10 +19,13 @@ namespace SentimentAnalysis
 
         static async Task Main(string[] args)
         {
+            //1、创建模型
             var model = await TrainModelAsync();
 
+            //2、测试精确度
             Evaluate(model);
 
+            //3、预测，识别情感类型
             var predictions = model.Predict(TestSentimentData.Sentiments);
 
             var sentimentsAndPredictions = TestSentimentData.Sentiments.Zip(predictions, (sentiment, prediction) => (sentiment, prediction));
@@ -54,12 +57,13 @@ namespace SentimentAnalysis
 
         private static async Task<PredictionModel<SentimentData, SentimentPrediction>> TrainModelAsync()
         {
+            //LearningPipeline定义机器学习任务需要的步骤
             var pipeLine = new LearningPipeline();
-
+            //添加data loader
             pipeLine.Add(new TextLoader(TrainDataPath).CreateFrom<SentimentData>());
-
+            //添加transforms
             pipeLine.Add(new TextFeaturizer("Features", "SentimentText"));
-
+            //添加trainer/learner  这里添加 快速二叉树分类器
             pipeLine.Add(new FastTreeBinaryClassifier() { NumLeaves = 5, NumTrees = 5, MinDocumentsInLeafs = 2 });
 
             Console.WriteLine("=============== Training Model =============== ");

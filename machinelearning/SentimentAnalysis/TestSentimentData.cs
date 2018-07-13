@@ -21,6 +21,11 @@ namespace SentimentAnalysis
             {
                 SentimentText = "Joe versus the Volcano Coffee Company is a great film.",
                 Sentiment = 0
+            },
+            new SentimentData
+            {
+                SentimentText = "Today is a rain day.",
+                Sentiment = 0
             }
 
         };
