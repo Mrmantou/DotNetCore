@@ -5,9 +5,21 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="..\datasets\sentiment-imdb-train.txt" Link="datasets\sentiment-imdb-train.txt" />
-    <Content Include="..\datasets\sentiment-yelp-test.txt" Link="datasets\sentiment-yelp-test.txt" />
+    <Content Include="..\datasets\sentiment-imdb-train.txt" Link="datasets\sentiment-imdb-train.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\datasets\sentiment-yelp-test.txt" Link="datasets\sentiment-yelp-test.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
