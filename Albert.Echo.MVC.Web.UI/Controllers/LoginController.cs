@@ -11,6 +11,7 @@ namespace Albert.Echo.MVC.Web.UI.Controllers
         public IActionResult Index()
         {
             return View();
+
         }
     }
 }
