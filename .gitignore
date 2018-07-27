@@ -19,6 +19,7 @@ bld/
 #vs  vscode
 .vs/
 .vscode/
+packages/
 
 # Roslyn cache directories
 *.ide/
