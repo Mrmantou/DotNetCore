@@ -9,7 +9,7 @@ using ContosoUniversity.Models;
 
 namespace ContosoUniversity.Pages.Instructors
 {
-    public class CreateModel : PageModel
+    public class CreateModel : InstructorCoursesPageModel
     {
         private readonly ContosoUniversity.Models.SchoolContext _context;
 
@@ -20,23 +20,50 @@ namespace ContosoUniversity.Pages.Instructors
 
         public IActionResult OnGet()
         {
+            var instructor = new Instructor();
+            instructor.CourseAssignments = new List<CourseAssignment>();
+
+            PopulateAssignedCourseData(_context, instructor);
             return Page();
         }
 
         [BindProperty]
         public Instructor Instructor { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string[] selectedCourses)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            var newInstructor = new Instructor();
+            if (selectedCourses != null)
+            {
+                newInstructor.CourseAssignments = new List<CourseAssignment>();
+                foreach (var course in selectedCourses)
+                {
+                    var courseToAdd = new CourseAssignment
+                    {
+                        CourseID = int.Parse(course)
+                    };
+                    newInstructor.CourseAssignments.Add(courseToAdd);
+                }
+            }
 
-            _context.Instructors.Add(Instructor);
-            await _context.SaveChangesAsync();
+            if (await TryUpdateModelAsync<Instructor>(
+                newInstructor,
+                "Instructor",
+                i => i.FirstMidName, i => i.LastName,
+                i => i.HireDate, i => i.OfficeAssignment))
+            {
+                _context.Instructors.Add(Instructor);
+                await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+                return RedirectToPage("./Index");
+            }
+
+            PopulateAssignedCourseData(_context, newInstructor);
+            return Page();
         }
     }
 }
