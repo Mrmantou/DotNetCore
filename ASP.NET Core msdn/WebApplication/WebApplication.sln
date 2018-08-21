@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppRazorPage", "WebAppRa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMiddleware", "WebMiddleware\WebMiddleware.csproj", "{1925F084-88DF-415E-BCED-9DAEA6E31CDE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MiddleWare", "MiddleWare", "{5004420F-7666-4C2E-97E1-EFE83480B861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiddlewareExtensibilitySample", "MiddlewareExtensibilitySample\MiddlewareExtensibilitySample.csproj", "{A75559E4-236B-4DE2-BA44-3CA6BA9CFFDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,17 @@ Global
 		{1925F084-88DF-415E-BCED-9DAEA6E31CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1925F084-88DF-415E-BCED-9DAEA6E31CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1925F084-88DF-415E-BCED-9DAEA6E31CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75559E4-236B-4DE2-BA44-3CA6BA9CFFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75559E4-236B-4DE2-BA44-3CA6BA9CFFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75559E4-236B-4DE2-BA44-3CA6BA9CFFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75559E4-236B-4DE2-BA44-3CA6BA9CFFDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1925F084-88DF-415E-BCED-9DAEA6E31CDE} = {5004420F-7666-4C2E-97E1-EFE83480B861}
+		{A75559E4-236B-4DE2-BA44-3CA6BA9CFFDA} = {5004420F-7666-4C2E-97E1-EFE83480B861}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DA8A01D-070F-451B-8DF2-191DC42B1F0C}
