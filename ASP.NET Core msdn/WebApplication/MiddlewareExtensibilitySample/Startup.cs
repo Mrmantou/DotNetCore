@@ -41,6 +41,9 @@ namespace MiddlewareExtensibilitySample
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             #region******* my add code *******
+            //Set up the Simple Injector container.
+            //Register the factory and middleware.
+            //Make the app's database context available from the Simple Injector container for a Razor Page.
             //使用 SimpleInjectorMiddlewareFactory 替换默认的中间件工厂
             services.AddTransient<IMiddlewareFactory>(_ =>
             {
