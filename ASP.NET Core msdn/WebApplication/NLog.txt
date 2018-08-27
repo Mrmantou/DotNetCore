@@ -1,0 +1,7 @@
+https://github.com/NLog/NLog.Extensions.Logging
+
+*Getting started with ASP.NET Core 2
+*Getting started with .NET Core 2 Console application
+*Getting started with ASP.NET Core 1 (csproj - vs2017)
+*Getting Started with ASP.NET Core 1 (project.json - vs2015)
+*Multiple blogs to get started with ASP.NET Core and NLog
