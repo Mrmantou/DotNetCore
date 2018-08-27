@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using System.Threading;
 
 namespace LogDemo
 {
@@ -10,6 +11,12 @@ namespace LogDemo
     {
         private readonly ILogger logger;
 
+        /// <summary>
+        /// Description:主程序构造方法
+        /// <para>-----:通过ConfigurationBuilder获取配置文件中的logger配置</para>
+        /// <para>-----:通过依赖注入创建logger对象</para>
+        /// <para>-----:</para>
+        /// </summary>
         public Program()
         {
             var loggingConfiguration = new ConfigurationBuilder()
@@ -22,8 +29,8 @@ namespace LogDemo
                 {
                     builder
                         .AddConfiguration(loggingConfiguration.GetSection("Logging"))
+                        .AddDebug()
                         .AddConsole();
-
                 });
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
@@ -33,9 +40,54 @@ namespace LogDemo
 
         static void Main(string[] args)
         {
-            new Program().Execute(args);
+            //new Program().Execute(args);
+            new Program().SampleDemo();
+
+            Thread.Sleep(500);
 
             Console.WriteLine("Hello World!");
+            Console.WriteLine("press any key to exit...");
+            Console.ReadKey();
+            
+        }
+
+        /* 配置文件
+        {
+          "Logging": {
+            "LogLevel": {
+              "Default": "Debug", 设置日志显示级别
+              "System": "Information",
+              "Microsoft": "Information"
+            },
+            "Console": {
+              "IncludeScopes": "false" 设置是否按照LogLevel进行过滤
+            }
+          }
+        }
+        */
+        private void SampleDemo()
+        {
+            //日志等级 enum LogLevel
+            logger.LogTrace("Hello world! -- trace");
+            logger.LogDebug("Hello world! -- debug");
+            logger.LogInformation("Hello world! -- info");
+            logger.LogWarning("Hello world! -- warning");
+            logger.LogError("Hello world! -- error");
+            logger.LogCritical("Hello world! -- critical");
+            
+            logger.LogInformation(100, "Hello world! -- info");
+            logger.LogInformation(101, "Hello world! -- info");
+
+            logger.LogInformation(102, "Hello world! {1} -- info",123);
+
+            try
+            {
+                throw new Exception("exception test");
+            }
+            catch(Exception ex)
+            {
+                logger.LogWarning(103, ex, "a exception {ex}", "try throw");
+            }
         }
 
         private void Execute(string[] args)
