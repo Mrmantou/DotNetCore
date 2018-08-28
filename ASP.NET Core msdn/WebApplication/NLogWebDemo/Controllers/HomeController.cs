@@ -1,17 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NLogWebDemo.Models;
+using System.Diagnostics;
 
 namespace NLogWebDemo.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            this.logger = logger;
+        }
+
         public IActionResult Index()
         {
+            var requestAddr = this.HttpContext.Request.Host.Value;
+
+            logger.LogInformation("Request form {requestAddr}, Index page says hello", requestAddr);
+
             return View();
         }
 
