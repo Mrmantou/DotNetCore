@@ -34,9 +34,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{3746
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogDemo", "LogDemo\LogDemo.csproj", "{2CAF63FF-CE3F-40A5-A150-F34035CA46D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogDemo", "NLogDemo\NLogDemo.csproj", "{0856F69C-B3E4-4227-AD9E-F7A7D51358F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLogDemo", "NLogDemo\NLogDemo.csproj", "{0856F69C-B3E4-4227-AD9E-F7A7D51358F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogWebDemo", "NLogWebDemo\NLogWebDemo.csproj", "{85D5DD89-19F6-49D3-A6DE-530E3F70EB33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLogWebDemo", "NLogWebDemo\NLogWebDemo.csproj", "{85D5DD89-19F6-49D3-A6DE-530E3F70EB33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5ADE603-F3CD-4DF1-BD4B-FC476386C1DB}"
+	ProjectSection(SolutionItems) = preProject
+		readme.txt = readme.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
