@@ -38,10 +38,10 @@ namespace NLogWebDemo
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .ConfigureLogging(logging =>
+                .ConfigureLogging(loggingBuilder =>
                     {
-                        logging.ClearProviders();
-                        logging.SetMinimumLevel(LogLevel.Trace);
+                        loggingBuilder.ClearProviders();
+                        loggingBuilder.SetMinimumLevel(LogLevel.Trace);
                     })
                 .UseNLog();
     }

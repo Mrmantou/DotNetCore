@@ -25,9 +25,9 @@ namespace LogDemo
                 .Build();
 
             var serviceCollection = new ServiceCollection()
-                .AddLogging(builder =>
+                .AddLogging(loggingBuilder =>
                 {
-                    builder
+                    loggingBuilder
                         .AddConfiguration(loggingConfiguration.GetSection("Logging"))
                         .AddDebug()
                         .AddConsole();
