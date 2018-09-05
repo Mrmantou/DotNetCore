@@ -47,6 +47,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericHostSampleConsole", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{5F7F7858-F210-4E77-9B95-F3DEC3EA637B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RepositoryPattern", "RepositoryPattern", "{08E2DEDC-8D88-4F20-BE02-8E3095A9392D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPatternSample", "RepositoryPatternSample\RepositoryPatternSample.csproj", "{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +113,10 @@ Global
 		{46406AB7-FFBF-4646-8153-0E0F25F00121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46406AB7-FFBF-4646-8153-0E0F25F00121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46406AB7-FFBF-4646-8153-0E0F25F00121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +133,7 @@ Global
 		{0856F69C-B3E4-4227-AD9E-F7A7D51358F2} = {37461CF4-B385-45B6-AE93-FAE8BE80B249}
 		{85D5DD89-19F6-49D3-A6DE-530E3F70EB33} = {37461CF4-B385-45B6-AE93-FAE8BE80B249}
 		{46406AB7-FFBF-4646-8153-0E0F25F00121} = {5F7F7858-F210-4E77-9B95-F3DEC3EA637B}
+		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231} = {08E2DEDC-8D88-4F20-BE02-8E3095A9392D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DA8A01D-070F-451B-8DF2-191DC42B1F0C}
