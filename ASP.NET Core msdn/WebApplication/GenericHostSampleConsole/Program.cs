@@ -32,6 +32,10 @@ namespace GenericHostSampleConsole
                     services.AddLogging();
                     services.AddHostedService<LifetimeEventsHostedService>();
                     services.AddHostedService<TimedHostedService>();
+
+                    services.AddHostedService<ConsumeScopedServiceHostedService>();
+                    services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
+
                 })
                 .ConfigureLogging((hostContext, loggingBuilder) =>
                 {
@@ -40,6 +44,76 @@ namespace GenericHostSampleConsole
                 })
                 .UseConsoleLifetime()
                 .Build();
+
+            await host.RunAsync();
+        }
+
+        public static async Task Main6(string[] args)
+        {
+            var host = new HostBuilder()
+                .Build();
+
+            Console.WriteLine("Set up a host");
+
+            using (host)
+            {
+                host.Start();
+
+                await host.WaitForShutdownAsync();
+            }
+        }
+
+        public static async Task Main5(string[] args)
+        {
+            var host = new HostBuilder()
+                .Build();
+
+            Console.WriteLine("Set up a host");
+
+            using (host)
+            {
+                host.Start();
+
+                await host.StopAsync(TimeSpan.FromSeconds(5));
+            }
+        }
+
+        public static async Task Main4(string[] args)
+        {
+            var hostBuilder = new HostBuilder();
+
+            Console.WriteLine("Set up RunConsoleAsync");
+
+            //RunConsoleAsync enables console support, builds and starts the host, and waits for Ctrl+C/SIGINT or SIGTERM to shut down.
+            await hostBuilder.RunConsoleAsync();
+        }
+
+        public static async Task Main3(string[] args)
+        {
+            var host = new HostBuilder()
+                //.UseConsoleLifetime()
+                .Build();
+            Console.WriteLine("Set up a host Run Async");
+
+            await host.RunAsync();
+        }
+
+        public static void Main2(string[] args)
+        {
+            var host = new HostBuilder()
+                 //.UseConsoleLifetime()
+                 .Build();
+            Console.WriteLine("Set up a host run");
+
+            host.Run();
+        }
+
+        public static async Task Main1(string[] args)
+        {
+            var host = new HostBuilder()
+                //.UseConsoleLifetime()
+                .Build();
+            Console.WriteLine("Set up a host");
 
             await host.RunAsync();
         }
