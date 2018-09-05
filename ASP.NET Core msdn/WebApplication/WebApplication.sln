@@ -51,6 +51,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RepositoryPattern", "Reposi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPatternSample", "RepositoryPatternSample\RepositoryPatternSample.csproj", "{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTTPRequests", "HTTPRequests", "{0CE11A7C-AA3D-4DBA-92E6-2A1CB03A4C5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientFactorySample", "HttpClientFactorySample\HttpClientFactorySample.csproj", "{AAEF51B6-4E4B-4F30-A96E-183811F511D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,10 @@ Global
 		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAEF51B6-4E4B-4F30-A96E-183811F511D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEF51B6-4E4B-4F30-A96E-183811F511D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEF51B6-4E4B-4F30-A96E-183811F511D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEF51B6-4E4B-4F30-A96E-183811F511D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +142,7 @@ Global
 		{85D5DD89-19F6-49D3-A6DE-530E3F70EB33} = {37461CF4-B385-45B6-AE93-FAE8BE80B249}
 		{46406AB7-FFBF-4646-8153-0E0F25F00121} = {5F7F7858-F210-4E77-9B95-F3DEC3EA637B}
 		{3EEFAC3E-98D5-4EC8-9872-20CB69B2E231} = {08E2DEDC-8D88-4F20-BE02-8E3095A9392D}
+		{AAEF51B6-4E4B-4F30-A96E-183811F511D3} = {0CE11A7C-AA3D-4DBA-92E6-2A1CB03A4C5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DA8A01D-070F-451B-8DF2-191DC42B1F0C}

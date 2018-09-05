@@ -1,0 +1,24 @@
+﻿@page
+@model NamedClientModel
+@{
+    ViewData["Title"] = "Pull Requests for Docs Repo";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.GetPullRequestsError)
+{
+    <p>Unable to get issues from GitHub. Please try again later.</p>
+}
+else if (Model.HasPullRequests)
+{
+    <ul></ul>
+    @foreach (var pull in Model.PullRequests)
+    {
+        <li>@pull.Title</li>
+    }
+}
+else
+{
+    <p>No pull requests found.</p>
+}
