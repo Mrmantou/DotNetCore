@@ -17,12 +17,14 @@ namespace ConsoleApp.SQLite
     /// - Select the Debug tab in the left pane.
     /// - Set Working directory to the project directory.
     /// - Save the changes.
+    /// 启用配置文件需要安装包：
+    /// - Microsoft.Extensions.Configuration
+    /// - Microsoft.Extensions.Configuration.Json
     /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("Config.json")
