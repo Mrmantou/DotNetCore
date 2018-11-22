@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConsoleApp.SQLite": {
+      "commandName": "Project",
+      "workingDirectory": "F:\\mygit\\DotNetCore\\EntityFrameworkCore\\_01_ConsoleApp.SQLite\\ConsoleApp.SQLite"
+    }
+  }
+}
