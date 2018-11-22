@@ -85,7 +85,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BlogId,Url")] Blog blog)
+        public async Task<IActionResult> Edit(int id, [Bind("BlogId,Name,Url")] Blog blog)
         {
             if (id != blog.BlogId)
             {

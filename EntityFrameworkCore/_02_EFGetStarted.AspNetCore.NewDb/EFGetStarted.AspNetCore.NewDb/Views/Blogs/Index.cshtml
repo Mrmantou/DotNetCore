@@ -13,14 +13,21 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Url)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Url)
             </td>
@@ -30,6 +37,6 @@
                 <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
