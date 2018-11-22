@@ -47,7 +47,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
-            ViewData["BlogId"] = new SelectList(_context.Blogs, "BlogId", "BlogId");
+            ViewData["Blogs"] = new SelectList(_context.Blogs, "BlogId", "Name");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BlogId"] = new SelectList(_context.Blogs, "BlogId", "BlogId", post.BlogId);
+            ViewData["Blogs"] = new SelectList(_context.Blogs, "BlogId", "Name", post.BlogId);
             return View(post);
         }
 
@@ -81,7 +81,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Controllers
             {
                 return NotFound();
             }
-            ViewData["BlogId"] = new SelectList(_context.Blogs, "BlogId", "BlogId", post.BlogId);
+            ViewData["Blogs"] = new SelectList(_context.Blogs, "BlogId", "Name", post.BlogId);
             return View(post);
         }
 
@@ -117,7 +117,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BlogId"] = new SelectList(_context.Blogs, "BlogId", "BlogId", post.BlogId);
+            ViewData["Blogs"] = new SelectList(_context.Blogs, "BlogId", "Name", post.BlogId);
             return View(post);
         }
 
