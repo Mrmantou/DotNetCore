@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using System;
 using System.IO;
 
@@ -31,8 +34,18 @@ namespace ConsoleApp.SQLite
                 .Build();
 
             var connection = config.GetConnectionString("BloggingDatabase");
-            
-            using (var context = new BloggingContext(connection))
+
+            //ILoggerFactory loggerFactory = new LoggerFactory(new[] { new ConsoleLoggerProvider((_, __) => true, true) });
+
+            ILoggerFactory loggerFactory = new LoggerFactory(
+                new[] {
+                    new ConsoleLoggerProvider((category, level)
+                        => category == DbLoggerCategory.Database.Command.Name && 
+                            level == LogLevel.Information, true)
+                });
+
+
+            using (var context = new BloggingContext(connection, loggerFactory))
             {
                 context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
                 var count = context.SaveChanges();

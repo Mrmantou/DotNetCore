@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,9 +9,12 @@ namespace ConsoleApp.SQLite
     public class BloggingContext : DbContext
     {
         private string connection = string.Empty;
-        public BloggingContext(string connection)
+        private ILoggerFactory loggerFactory = null;
+
+        public BloggingContext(string connection, ILoggerFactory loggerFactory)
         {
             this.connection = connection;
+            this.loggerFactory = loggerFactory;
         }
 
         public DbSet<Blog> Blogs { get; set; }
@@ -19,6 +23,7 @@ namespace ConsoleApp.SQLite
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite("Data Source=blogging.db");
+            optionsBuilder.UseLoggerFactory(loggerFactory);
             optionsBuilder.UseSqlite(connection);
         }
     }
