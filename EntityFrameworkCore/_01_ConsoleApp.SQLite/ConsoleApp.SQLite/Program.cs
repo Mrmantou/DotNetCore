@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace ConsoleApp.SQLite
 {
@@ -20,7 +22,15 @@ namespace ConsoleApp.SQLite
     {
         static void Main(string[] args)
         {
-            using (var context = new BloggingContext())
+
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("Config.json")
+                .Build();
+
+            var connection = config.GetConnectionString("BloggingDatabase");
+            
+            using (var context = new BloggingContext(connection))
             {
                 context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
                 var count = context.SaveChanges();

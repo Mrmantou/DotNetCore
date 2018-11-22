@@ -7,13 +7,19 @@ namespace ConsoleApp.SQLite
 {
     public class BloggingContext : DbContext
     {
+        private string connection = string.Empty;
+        public BloggingContext(string connection)
+        {
+            this.connection = connection;
+        }
 
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=blogging.db");
+            //optionsBuilder.UseSqlite("Data Source=blogging.db");
+            optionsBuilder.UseSqlite(connection);
         }
     }
 
