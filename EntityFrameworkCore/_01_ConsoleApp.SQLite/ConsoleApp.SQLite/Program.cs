@@ -3,6 +3,7 @@
 namespace ConsoleApp.SQLite
 {
     /// <summary>
+    /// https://docs.microsoft.com/en-us/ef/core/get-started/netcore/new-db-sqlite
     /// nuget package:
     ///  - Microsoft.EntityFrameworkCore.Sqlite
     ///  - Microsoft.EntityFrameworkCore.Design
