@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.Demo", "Albert.Demo\Albert.Demo.csproj", "{4CB19EF0-4F03-4762-B9A8-061963612EE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo", "Albert.Demo\Albert.Demo.csproj", "{4CB19EF0-4F03-4762-B9A8-061963612EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.EntityFramework.Sqlite", "Albert.EntityFramework.Sqlite\Albert.EntityFramework.Sqlite.csproj", "{8135F28E-5033-4195-87F7-972B2437910C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.DataModel", "Albert.DataModel\Albert.DataModel.csproj", "{CBBFF0E6-AFD2-4498-96CE-D36ACCF8A055}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4CB19EF0-4F03-4762-B9A8-061963612EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB19EF0-4F03-4762-B9A8-061963612EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CB19EF0-4F03-4762-B9A8-061963612EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8135F28E-5033-4195-87F7-972B2437910C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8135F28E-5033-4195-87F7-972B2437910C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8135F28E-5033-4195-87F7-972B2437910C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8135F28E-5033-4195-87F7-972B2437910C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBBFF0E6-AFD2-4498-96CE-D36ACCF8A055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBBFF0E6-AFD2-4498-96CE-D36ACCF8A055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBBFF0E6-AFD2-4498-96CE-D36ACCF8A055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBBFF0E6-AFD2-4498-96CE-D36ACCF8A055}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
