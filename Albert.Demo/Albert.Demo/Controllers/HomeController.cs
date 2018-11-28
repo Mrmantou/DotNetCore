@@ -12,7 +12,7 @@ namespace Albert.Demo.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Demo");
         }
 
         public IActionResult About()
@@ -24,7 +24,7 @@ namespace Albert.Demo.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "dabaotongxue contact page.";
 
             return View();
         }
