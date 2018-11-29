@@ -30,7 +30,7 @@ namespace Albert.EntityFramework.Sqlite
                 modelBuilder.ApplyConfiguration(configurationInstance);
             }
 
-            //modelBuilder.ApplyConfiguration()
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
