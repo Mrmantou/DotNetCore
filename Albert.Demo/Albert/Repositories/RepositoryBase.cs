@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Albert.Core.Repositories
 {
-    public class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
+    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
     {
-        //  public DbSet<TEntity> Table=>
 
         #region Select/Get/Query
 
@@ -18,7 +17,7 @@ namespace Albert.Core.Repositories
         /// Used to get a IQueryable that is used to retrieve entities from entire table.
         /// </summary>
         /// <returns>IQueryable to be used to select entities from database</returns>
-        public IQueryable<TEntity> GetAll() { throw new NotImplementedException(); }
+        public abstract IQueryable<TEntity> GetAll();
 
         /// <summary>
         /// Used to get a IQueryable that is used to retrieve entities from entire table.
@@ -26,33 +25,48 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="propertySelectors">A list of include expressions.</param>
         /// <returns>IQueryable to be used to select entities from database</returns>
-        public IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors) { throw new NotImplementedException(); }
+        public virtual IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
+        {
+            return GetAll();
+        }
 
         /// <summary>
         /// Used to get all entities.
         /// </summary>
         /// <returns>List of all entities</returns>
-        public List<TEntity> GetAllList() { throw new NotImplementedException(); }
+        public virtual List<TEntity> GetAllList()
+        {
+            return GetAll().ToList();
+        }
 
         /// <summary>
         /// Used to get all entities.
         /// </summary>
         /// <returns>List of all entities</returns>
-        public Task<List<TEntity>> GetAllListAsync() { throw new NotImplementedException(); }
+        public virtual Task<List<TEntity>> GetAllListAsync()
+        {
+            return Task.FromResult(GetAllList());
+        }
 
         /// <summary>
         /// Used to get all entities based on given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate">A condition to filter entities</param>
         /// <returns>List of all entities</returns>
-        public List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAll().Where(predicate).ToList();
+        }
 
         /// <summary>
         /// Used to get all entities based on given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate">A condition to filter entities</param>
         /// <returns>List of all entities</returns>
-        public Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(GetAllList(predicate));
+        }
 
         /// <summary>
         /// Used to run a query over entire entities.
@@ -62,68 +76,111 @@ namespace Albert.Core.Repositories
         /// <typeparam name="T">Type of return value of this method</typeparam>
         /// <param name="queryMethod">This method is used to query over entities</param>
         /// <returns>Query result</returns>
-        public T Query<T>(Func<IQueryable<TEntity>, T> queryMethod) { throw new NotImplementedException(); }
+        public virtual T Query<T>(Func<IQueryable<TEntity>, T> queryMethod)
+        {
+            return queryMethod(GetAll());
+        }
 
         /// <summary>
         /// Gets an entity with given primary key.
         /// </summary>
         /// <param name="id">Primary key of the entity to get</param>
         /// <returns>Entity</returns>
-        public TEntity Get(TPrimaryKey id) { throw new NotImplementedException(); }
+        public virtual TEntity Get(TPrimaryKey id)
+        {
+            var entity = FirstOrDefault(id);
+
+            if (entity == null)
+            {
+                throw new Exception($"cannot find entity of {typeof(TEntity)} with id={id}");
+            }
+
+            return entity;
+        }
 
         /// <summary>
         /// Gets an entity with given primary key.
         /// </summary>
         /// <param name="id">Primary key of the entity to get</param>
         /// <returns>Entity</returns>
-        public Task<TEntity> GetAsync(TPrimaryKey id) { throw new NotImplementedException(); }
+        public virtual async Task<TEntity> GetAsync(TPrimaryKey id)
+        {
+            var entity = await FirstOrDefaultAsync(id);
+            if (entity == null)
+            {
+                throw new Exception($"cannot find entity of {typeof(TEntity)} with id={id}");
+            }
+
+            return entity;
+        }
 
         /// <summary>
         /// Gets exactly one entity with given predicate.
         /// Throws exception if no entity or more than one entity.
         /// </summary>
         /// <param name="predicate">Entity</param>
-        public TEntity Single(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual TEntity Single(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAll().Single(predicate);
+        }
 
         /// <summary>
         /// Gets exactly one entity with given predicate.
         /// Throws exception if no entity or more than one entity.
         /// </summary>
         /// <param name="predicate">Entity</param>
-        public Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(Single(predicate));
+        }
 
         /// <summary>
         /// Gets an entity with given primary key or null if not found.
         /// </summary>
         /// <param name="id">Primary key of the entity to get</param>
         /// <returns>Entity or null</returns>
-        public TEntity FirstOrDefault(TPrimaryKey id) { throw new NotImplementedException(); }
+        public virtual TEntity FirstOrDefault(TPrimaryKey id)
+        {
+            return GetAll().FirstOrDefault(CreateEqualityExpressionForId(id));
+        }
 
         /// <summary>
         /// Gets an entity with given primary key or null if not found.
         /// </summary>
         /// <param name="id">Primary key of the entity to get</param>
         /// <returns>Entity or null</returns>
-        public Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id) { throw new NotImplementedException(); }
+        public virtual Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id)
+        {
+            return Task.FromResult(FirstOrDefault(id));
+        }
 
         /// <summary>
         /// Gets an entity with given given predicate or null if not found.
         /// </summary>
         /// <param name="predicate">Predicate to filter entities</param>
-        public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAll().FirstOrDefault(predicate);
+        }
 
         /// <summary>
         /// Gets an entity with given given predicate or null if not found.
         /// </summary>
         /// <param name="predicate">Predicate to filter entities</param>
-        public Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(FirstOrDefault(predicate));
+        }
 
         /// <summary>
         /// Creates an entity with given primary key without database access.
         /// </summary>
         /// <param name="id">Primary key of the entity to load</param>
         /// <returns>Entity</returns>
-        public TEntity Load(TPrimaryKey id) { throw new NotImplementedException(); }
+        public virtual TEntity Load(TPrimaryKey id)
+        {
+            return Get(id);
+        }
 
         #endregion
 
@@ -133,13 +190,16 @@ namespace Albert.Core.Repositories
         /// Inserts a new entity.
         /// </summary>
         /// <param name="entity">Inserted entity</param>
-        public TEntity Insert(TEntity entity) { throw new NotImplementedException(); }
+        public abstract TEntity Insert(TEntity entity);
 
         /// <summary>
         /// Inserts a new entity.
         /// </summary>
         /// <param name="entity">Inserted entity</param>
-        public Task<TEntity> InsertAsync(TEntity entity) { throw new NotImplementedException(); }
+        public virtual Task<TEntity> InsertAsync(TEntity entity)
+        {
+            return Task.FromResult(Insert(entity));
+        }
 
         /// <summary>
         /// Inserts a new entity and gets it's Id.
@@ -148,7 +208,10 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>Id of the entity</returns>
-        public TPrimaryKey InsertAndGetId(TEntity entity) { throw new NotImplementedException(); }
+        public virtual TPrimaryKey InsertAndGetId(TEntity entity)
+        {
+            return Insert(entity).Id;
+        }
 
         /// <summary>
         /// Inserts a new entity and gets it's Id.
@@ -157,19 +220,28 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>Id of the entity</returns>
-        public Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity) { throw new NotImplementedException(); }
+        public virtual Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity)
+        {
+            return Task.FromResult(InsertAndGetId(entity));
+        }
 
         /// <summary>
         /// Inserts or updates given entity depending on Id's value.
         /// </summary>
         /// <param name="entity">Entity</param>
-        public TEntity InsertOrUpdate(TEntity entity) { throw new NotImplementedException(); }
+        public virtual TEntity InsertOrUpdate(TEntity entity)
+        {
+            return entity.IsTransient() ? Insert(entity) : Update(entity);
+        }
 
         /// <summary>
         /// Inserts or updates given entity depending on Id's value.
         /// </summary>
         /// <param name="entity">Entity</param>
-        public Task<TEntity> InsertOrUpdateAsync(TEntity entity) { throw new NotImplementedException(); }
+        public virtual async Task<TEntity> InsertOrUpdateAsync(TEntity entity)
+        {
+            return entity.IsTransient() ? await InsertAsync(entity) : await UpdateAsync(entity);
+        }
 
         /// <summary>
         /// Inserts or updates given entity depending on Id's value.
@@ -179,7 +251,10 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>Id of the entity</returns>
-        public TPrimaryKey InsertOrUpdateAndGetId(TEntity entity) { throw new NotImplementedException(); }
+        public virtual TPrimaryKey InsertOrUpdateAndGetId(TEntity entity)
+        {
+            return InsertOrUpdate(entity).Id;
+        }
 
         /// <summary>
         /// Inserts or updates given entity depending on Id's value.
@@ -189,7 +264,10 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>Id of the entity</returns>
-        public Task<TPrimaryKey> InsertOrUpdateAndGetIdAsync(TEntity entity) { throw new NotImplementedException(); }
+        public virtual Task<TPrimaryKey> InsertOrUpdateAndGetIdAsync(TEntity entity)
+        {
+            return Task.FromResult(InsertOrUpdate(entity).Id);
+        }
 
         #endregion
 
@@ -199,13 +277,16 @@ namespace Albert.Core.Repositories
         /// Updates an existing entity.
         /// </summary>
         /// <param name="entity">Entity</param>
-        public TEntity Update(TEntity entity) { throw new NotImplementedException(); }
+        public abstract TEntity Update(TEntity entity);
 
         /// <summary>
         /// Updates an existing entity. 
         /// </summary>
         /// <param name="entity">Entity</param>
-        public Task<TEntity> UpdateAsync(TEntity entity) { throw new NotImplementedException(); }
+        public virtual Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            return Task.FromResult(Update(entity));
+        }
 
         /// <summary>
         /// Updates an existing entity.
@@ -213,7 +294,12 @@ namespace Albert.Core.Repositories
         /// <param name="id">Id of the entity</param>
         /// <param name="updateAction">Action that can be used to change values of the entity</param>
         /// <returns>Updated entity</returns>
-        public TEntity Update(TPrimaryKey id, Action<TEntity> updateAction) { throw new NotImplementedException(); }
+        public virtual TEntity Update(TPrimaryKey id, Action<TEntity> updateAction)
+        {
+            var entity = Get(id);
+            updateAction(entity);
+            return entity;
+        }
 
         /// <summary>
         /// Updates an existing entity.
@@ -221,7 +307,12 @@ namespace Albert.Core.Repositories
         /// <param name="id">Id of the entity</param>
         /// <param name="updateAction">Action that can be used to change values of the entity</param>
         /// <returns>Updated entity</returns>
-        public Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction) { throw new NotImplementedException(); }
+        public virtual async Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction)
+        {
+            var entity = await GetAsync(id);
+            await updateAction(entity);
+            return entity;
+        }
 
         #endregion
 
@@ -231,25 +322,33 @@ namespace Albert.Core.Repositories
         /// Deletes an entity.
         /// </summary>
         /// <param name="entity">Entity to be deleted</param>
-        public void Delete(TEntity entity) { throw new NotImplementedException(); }
+        public abstract void Delete(TEntity entity);
 
         /// <summary>
         /// Deletes an entity.
         /// </summary>
         /// <param name="entity">Entity to be deleted</param>
-        public Task DeleteAsync(TEntity entity) { throw new NotImplementedException(); }
+        public virtual Task DeleteAsync(TEntity entity)
+        {
+            Delete(entity);
+            return Task.FromResult(0);
+        }
 
         /// <summary>
         /// Deletes an entity by primary key.
         /// </summary>
         /// <param name="id">Primary key of the entity</param>
-        public void Delete(TPrimaryKey id) { throw new NotImplementedException(); }
+        public abstract void Delete(TPrimaryKey id);
 
         /// <summary>
         /// Deletes an entity by primary key.
         /// </summary>
         /// <param name="id">Primary key of the entity</param>
-        public Task DeleteAsync(TPrimaryKey id) { throw new NotImplementedException(); }
+        public virtual Task DeleteAsync(TPrimaryKey id)
+        {
+            Delete(id);
+            return Task.FromResult(0);
+        }
 
         /// <summary>
         /// Deletes many entities by function.
@@ -258,7 +357,13 @@ namespace Albert.Core.Repositories
         /// given predicate.
         /// </summary>
         /// <param name="predicate">A condition to filter entities</param>
-        public void Delete(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual void Delete(Expression<Func<TEntity, bool>> predicate)
+        {
+            foreach (var entity in GetAll().Where(predicate).ToList())
+            {
+                Delete(entity);
+            }
+        }
 
         /// <summary>
         /// Deletes many entities by function.
@@ -267,7 +372,11 @@ namespace Albert.Core.Repositories
         /// given predicate.
         /// </summary>
         /// <param name="predicate">A condition to filter entities</param>
-        public Task DeleteAsync(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            Delete(predicate);
+            return Task.FromResult(0);
+        }
 
         #endregion
 
@@ -277,39 +386,58 @@ namespace Albert.Core.Repositories
         /// Gets count of all entities in this repository.
         /// </summary>
         /// <returns>Count of entities</returns>
-        public int Count() { throw new NotImplementedException(); }
+        public virtual int Count()
+        {
+            return GetAll().Count();
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository.
         /// </summary>
         /// <returns>Count of entities</returns>
-        public Task<int> CountAsync() { throw new NotImplementedException(); }
+        public virtual Task<int> CountAsync()
+        {
+            return Task.FromResult(Count());
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository based on given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate">A method to filter count</param>
         /// <returns>Count of entities</returns>
-        public int Count(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual int Count(Expression<Func<TEntity, bool>> predicate)
+        {
+
+            return GetAll().Where(predicate).Count();
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository based on given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate">A method to filter count</param>
         /// <returns>Count of entities</returns>
-        public Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(Count(predicate));
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository (use if expected return value is greather than <see cref="int.MaxValue"/>.
         /// </summary>
         /// <returns>Count of entities</returns>
-        public long LongCount() { throw new NotImplementedException(); }
+        public virtual long LongCount()
+        {
+            return GetAll().LongCount();
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository (use if expected return value is greather than <see cref="int.MaxValue"/>.
         /// </summary>
         /// <returns>Count of entities</returns>
-        public Task<long> LongCountAsync() { throw new NotImplementedException(); }
+        public virtual Task<long> LongCountAsync()
+        {
+            return Task.FromResult(LongCount());
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository based on given <paramref name="predicate"/>
@@ -317,7 +445,10 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="predicate">A method to filter count</param>
         /// <returns>Count of entities</returns>
-        public long LongCount(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual long LongCount(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAll().Where(predicate).LongCount();
+        }
 
         /// <summary>
         /// Gets count of all entities in this repository based on given <paramref name="predicate"/>
@@ -325,8 +456,23 @@ namespace Albert.Core.Repositories
         /// </summary>
         /// <param name="predicate">A method to filter count</param>
         /// <returns>Count of entities</returns>
-        public Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate) { throw new NotImplementedException(); }
+        public virtual Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(LongCount(predicate));
+        }
 
         #endregion
+
+        protected virtual Expression<Func<TEntity, bool>> CreateEqualityExpressionForId(TPrimaryKey id)
+        {
+            var lambdaParam = Expression.Parameter(typeof(TEntity));
+
+            var lambdaBody = Expression.Equal(
+                Expression.PropertyOrField(lambdaParam, "Id"),
+                Expression.Constant(id, typeof(TPrimaryKey))
+                );
+
+            return Expression.Lambda<Func<TEntity, bool>>(lambdaBody, lambdaParam);
+        }
     }
 }
