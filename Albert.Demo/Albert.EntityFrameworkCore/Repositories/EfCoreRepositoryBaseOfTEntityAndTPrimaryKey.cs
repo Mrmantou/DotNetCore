@@ -17,17 +17,23 @@ namespace Albert.EntityFrameworkCore.Repositories
     /// <typeparam name="TDbContext">DbContext which contains <typeparamref name="TEntity"/>.</typeparam>
     /// <typeparam name="TEntity">Type of the Entity for this repository</typeparam>
     /// <typeparam name="TPrimaryKey">Primary key of the entity</typeparam>
-    public class EfCoreRepositoryBase<TDbContext, TEntity, TPrimaryKey> : RepositoryBase<TEntity, TPrimaryKey>
-        where TEntity : class, IEntity<TPrimaryKey>
+    public class EfCoreRepositoryBase<TDbContext, TEntity, TPrimaryKey> : RepositoryBase<TEntity, TPrimaryKey>, IRepositoryWithDbContext
+        where TEntity : class, IEntity<TPrimaryKey>, IAggregateRoot<TPrimaryKey>
         where TDbContext : DbContext
     {
-        private TDbContext dbContext;
+        private readonly TDbContext dbContext;
+
+        public EfCoreRepositoryBase(TDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
 
         public virtual DbSet<TEntity> Entities => dbContext.Set<TEntity>();
-        
+
+        #region override RepositoryBase
         public override IQueryable<TEntity> GetAll()
         {
-            return GetAllIncluding();
+            return Entities.AsQueryable();
         }
 
         public override IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
@@ -186,6 +192,12 @@ namespace Albert.EntityFrameworkCore.Repositories
         {
             return await GetAll().Where(predicate).LongCountAsync();
         }
+        #endregion
+
+        public DbContext GetDbContext()
+        {
+            return dbContext;
+        }
 
         protected virtual void AttachIfNot(TEntity entity)
         {
@@ -208,5 +220,7 @@ namespace Albert.EntityFrameworkCore.Repositories
 
             return entry?.Entity as TEntity;
         }
+
+
     }
 }

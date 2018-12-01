@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Albert.Domain.Repositories
 {
-    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
+    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>,IAggregateRoot<TPrimaryKey>
     {
-
         #region Select/Get/Query
 
         /// <summary>
