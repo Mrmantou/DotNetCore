@@ -1,4 +1,5 @@
 ﻿using Albert.DataModel;
+using Albert.EntityFrameworkCore.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Albert.DataModel\Albert.DataModel.csproj" />
+    <ProjectReference Include="..\Albert.EntityFrameworkCore\Albert.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>
