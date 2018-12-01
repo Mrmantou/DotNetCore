@@ -1,6 +1,6 @@
 ﻿using Albert.Collections.Extensions;
-using Albert.Core.Entities;
-using Albert.Core.Repositories;
+using Albert.Domain.Entities;
+using Albert.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using Albert.Core.Entities;
+﻿using Albert.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albert.Core.Repositories
+namespace Albert.Domain.Repositories
 {
     public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
     {

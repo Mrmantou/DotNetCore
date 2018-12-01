@@ -1,4 +1,4 @@
-﻿using Albert.Core.Entities;
+﻿using Albert.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albert.Core.Repositories
+namespace Albert.Domain.Repositories
 {
     /// <summary>
     /// A shortcut of <see cref="IRepository{TEntity,TPrimaryKey}"/> for most used primary key type (<see cref="int"/>).
