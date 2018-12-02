@@ -1,5 +1,4 @@
-﻿using Albert.EntityFramework.Sqlite.Mapping;
-using Albert.EntityFrameworkCore;
+﻿using Albert.EntityFrameworkCore;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Albert.EntityFramework.Sqlite
+namespace Albert.Demo.EntityFramework.Sqlite
 {
     public class FriendContext : AlbertDbContext
     {

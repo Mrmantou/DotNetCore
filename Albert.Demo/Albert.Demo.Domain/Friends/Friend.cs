@@ -1,8 +1,11 @@
 ﻿using System;
 
-namespace Albert.DataModel
+namespace Albert.Demo.Domain.Friends
 {
-    public class FriendInfo
+    /// <summary>
+    /// 朋友实体
+    /// </summary>
+    public class Friend
     {
         /// <summary>
         /// 主键id

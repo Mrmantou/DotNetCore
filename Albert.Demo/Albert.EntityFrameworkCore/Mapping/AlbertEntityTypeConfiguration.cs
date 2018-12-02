@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albert.EntityFramework.Sqlite.Mapping
+namespace Albert.EntityFrameworkCore.Mapping
 {
     public abstract class AlbertEntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : class
     {

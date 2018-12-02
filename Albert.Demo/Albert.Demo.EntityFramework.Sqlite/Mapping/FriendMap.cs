@@ -6,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albert.EntityFramework.Sqlite.Mapping
+namespace Albert.Demo.EntityFramework.Sqlite
 {
-    public class FriendInfoMap : AlbertEntityTypeConfiguration<FriendInfo>
+    public class FriendMap : AlbertEntityTypeConfiguration<Friend>
     {
-        public override void Configure(EntityTypeBuilder<FriendInfo> builder)
+        public override void Configure(EntityTypeBuilder<Friend> builder)
         {
-            builder.ToTable("FriendInfo");
+            builder.ToTable("Friends");
             builder.HasKey(f => f.ID);
             builder.Property(f => f.NickName).HasMaxLength(20);
             builder.Property(f => f.Description).HasMaxLength(500);

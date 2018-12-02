@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albert.DataModel
+namespace Albert.Demo.Domain.Friends
 {
     public enum RelationType
     {
