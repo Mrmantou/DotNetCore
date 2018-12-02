@@ -13,7 +13,7 @@ namespace Albert.Demo.EntityFramework.Sqlite
         public override void Configure(EntityTypeBuilder<Friend> builder)
         {
             builder.ToTable("Friends");
-            builder.HasKey(f => f.ID);
+            builder.HasKey(f => f.Id);
             builder.Property(f => f.NickName).HasMaxLength(20);
             builder.Property(f => f.Description).HasMaxLength(500);
         }
