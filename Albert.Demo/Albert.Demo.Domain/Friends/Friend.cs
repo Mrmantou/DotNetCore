@@ -1,16 +1,13 @@
-﻿using System;
+﻿using Albert.Domain.Entities;
+using System;
 
 namespace Albert.Demo.Domain.Friends
 {
     /// <summary>
     /// 朋友实体
     /// </summary>
-    public class Friend
+    public class Friend : Entity
     {
-        /// <summary>
-        /// 主键id
-        /// </summary>
-        public int ID { get; set; }
         /// <summary>
         /// 昵称
         /// </summary>

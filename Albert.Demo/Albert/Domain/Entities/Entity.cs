@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Albert.Domain.Entities
@@ -48,6 +49,31 @@ namespace Albert.Domain.Entities
             return false;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Entity<TPrimaryKey>))
+            {
+                return false;
+            }
+
+            //Same instances must be considered as equal
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            var other = (Entity<TPrimaryKey>)obj;
+            //Must have a IS-A relation of types or must be same type
+            var typeOfThis = GetType();
+            var typeOfOther = other.GetType();
+            if (!typeOfThis.GetTypeInfo().IsAssignableFrom(typeOfOther) && !typeOfOther.GetTypeInfo().IsAssignableFrom(typeOfThis))
+            {
+                return false;
+            }
+
+            return Id.Equals(other.Id);
+        }
+
         public override int GetHashCode()
         {
             if (Id == null)
@@ -61,6 +87,21 @@ namespace Albert.Domain.Entities
         public override string ToString()
         {
             return $"[{GetType().Name} {Id}]";
+        }
+        
+        public static bool operator ==(Entity<TPrimaryKey> left, Entity<TPrimaryKey> right)
+        {
+            if (Equals(left, null))
+            {
+                return Equals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Entity<TPrimaryKey> left, Entity<TPrimaryKey> right)
+        {
+            return !(left == right);
         }
     }
 }

@@ -1,4 +1,8 @@
 ﻿using Albert.Demo.EntityFramework.Sqlite;
+using Albert.Domain.Repositories;
+using Albert.Domain.Uow;
+using Albert.EntityFrameworkCore.Repositories;
+using Albert.EntityFrameworkCore.Uow;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +41,11 @@ namespace Albert.Demo
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<FriendContext>(options => options.UseSqlite(Configuration.GetConnectionString("FriendInfo")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork<FriendContext>>();
+
+            services.AddTransient(typeof(IRepository<>), typeof(FriendRepository<>));
+            services.AddTransient(typeof(IRepository<,>), typeof(FriendRepository<,>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,7 +18,7 @@ namespace Albert.EntityFrameworkCore.Repositories
     /// <typeparam name="TEntity">Type of the Entity for this repository</typeparam>
     /// <typeparam name="TPrimaryKey">Primary key of the entity</typeparam>
     public class EfCoreRepositoryBase<TDbContext, TEntity, TPrimaryKey> : RepositoryBase<TEntity, TPrimaryKey>, IRepositoryWithDbContext
-        where TEntity : class, IEntity<TPrimaryKey>, IAggregateRoot<TPrimaryKey>
+        where TEntity : class, IEntity<TPrimaryKey>//, IAggregateRoot<TPrimaryKey>
         where TDbContext : DbContext
     {
         private readonly TDbContext dbContext;

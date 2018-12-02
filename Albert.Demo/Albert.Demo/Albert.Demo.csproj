@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Albert.Demo.EntityFramework.Sqlite\Albert.Demo.EntityFramework.Sqlite.csproj" />
+    <ProjectReference Include="..\Albert.EntityFrameworkCore\Albert.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>
