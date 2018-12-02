@@ -11,7 +11,7 @@ namespace Albert.Demo.EntityFramework.Sqlite
 {
     public class FriendContext : AlbertDbContext
     {
-        public FriendContext(DbContextOptions<FriendContext> options) : base(options)
+        public FriendContext(DbContextOptions<FriendContext> options) : base(options, Assembly.GetExecutingAssembly())
         {
         }
     }

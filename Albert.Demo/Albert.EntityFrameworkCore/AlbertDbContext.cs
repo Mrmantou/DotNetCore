@@ -10,13 +10,16 @@ namespace Albert.EntityFrameworkCore
 {
     public class AlbertDbContext : DbContext
     {
-        public AlbertDbContext(DbContextOptions options) : base(options)
+        private Assembly configAssembly;
+
+        public AlbertDbContext(DbContextOptions options, Assembly configAssembly) : base(options)
         {
+            this.configAssembly = configAssembly;
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+            var typesToRegister = configAssembly.GetTypes()
                 .Where(type => !string.IsNullOrEmpty(type.Namespace))
                 .Where(type => type.BaseType != null
                     && type.BaseType.IsGenericType
