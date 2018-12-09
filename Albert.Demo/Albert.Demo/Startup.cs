@@ -1,4 +1,5 @@
-﻿using Albert.Demo.EntityFramework.Sqlite;
+﻿using Albert.Demo.Application.Friends;
+using Albert.Demo.EntityFramework.Sqlite;
 using Albert.Domain.Repositories;
 using Albert.Domain.Uow;
 using Albert.EntityFrameworkCore.Repositories;
@@ -46,6 +47,8 @@ namespace Albert.Demo
 
             services.AddTransient(typeof(IRepository<>), typeof(FriendRepository<>));
             services.AddTransient(typeof(IRepository<,>), typeof(FriendRepository<,>));
+
+            services.AddTransient<IFriendAppService, FriendAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
