@@ -9,9 +9,9 @@ using System.Text;
 
 namespace Albert.Demo.EntityFramework.Sqlite
 {
-    public class FriendContext : AlbertDbContext
+    public class DemoContext : AlbertDbContext
     {
-        public FriendContext(DbContextOptions<FriendContext> options) : base(options, Assembly.GetExecutingAssembly())
+        public DemoContext(DbContextOptions<DemoContext> options) : base(options, Assembly.GetExecutingAssembly())
         {
         }
     }

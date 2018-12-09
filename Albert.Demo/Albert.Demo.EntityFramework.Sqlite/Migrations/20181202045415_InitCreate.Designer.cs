@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Albert.Demo.EntityFramework.Sqlite.Migrations
 {
-    [DbContext(typeof(FriendContext))]
+    [DbContext(typeof(DemoContext))]
     [Migration("20181202045415_InitCreate")]
     partial class InitCreate
     {

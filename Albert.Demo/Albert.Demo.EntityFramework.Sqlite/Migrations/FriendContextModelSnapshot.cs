@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Albert.Demo.EntityFramework.Sqlite.Migrations
 {
-    [DbContext(typeof(FriendContext))]
+    [DbContext(typeof(DemoContext))]
     partial class FriendContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

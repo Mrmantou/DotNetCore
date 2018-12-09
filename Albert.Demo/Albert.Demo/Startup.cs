@@ -2,7 +2,6 @@
 using Albert.Demo.EntityFramework.Sqlite;
 using Albert.Domain.Repositories;
 using Albert.Domain.Uow;
-using Albert.EntityFrameworkCore.Repositories;
 using Albert.EntityFrameworkCore.Uow;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,16 +36,15 @@ namespace Albert.Demo
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<FriendContext>(options => options.UseSqlite(Configuration.GetConnectionString("FriendInfo")));
+            services.AddDbContext<DemoContext>(options => options.UseSqlite(Configuration.GetConnectionString("DemoDefault")));
 
-            services.AddScoped<IUnitOfWork, UnitOfWork<FriendContext>>();
+            services.AddScoped<IUnitOfWork, UnitOfWork<DemoContext>>();
 
-            services.AddTransient(typeof(IRepository<>), typeof(FriendRepository<>));
-            services.AddTransient(typeof(IRepository<,>), typeof(FriendRepository<,>));
+            services.AddTransient(typeof(IRepository<>), typeof(DemoRepository<>));
+            services.AddTransient(typeof(IRepository<,>), typeof(DemoRepository<,>));
 
             services.AddTransient<IFriendAppService, FriendAppService>();
         }
@@ -74,6 +72,7 @@ namespace Albert.Demo
                     name: "default",
                     template: "{controller=Demo}/{action=Index}/{id?}");
             });
+            
         }
     }
 }
