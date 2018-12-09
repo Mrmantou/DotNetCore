@@ -19,8 +19,12 @@ namespace Albert.Demo.Domain.Friends
         /// </summary>
         Friend = 3,
         /// <summary>
+        /// 老师
+        /// </summary>
+        Teacher=4,
+        /// <summary>
         /// 其他
         /// </summary>
-        Others = 4
+        Others = 99
     }
 }
