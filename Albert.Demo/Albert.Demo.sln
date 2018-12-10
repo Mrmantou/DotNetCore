@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.Domain", "Alber
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.Application", "Albert.Demo.Application\Albert.Demo.Application.csproj", "{286F8912-E06E-416B-9753-8A4AB0B15F6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.Demo.EntityFramework.Sqlite", "Albert.Demo.EntityFramework.Sqlite\Albert.Demo.EntityFramework.Sqlite.csproj", "{BB020189-B9FA-4851-AEB3-8046217CA91C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.EntityFramework.Sqlite", "Albert.Demo.EntityFramework.Sqlite\Albert.Demo.EntityFramework.Sqlite.csproj", "{BB020189-B9FA-4851-AEB3-8046217CA91C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0C184BD-0E8E-4401-A3B6-65DABFD75AE8}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
