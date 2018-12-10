@@ -34,6 +34,7 @@ apt install nginx
 ```
 
 ≈‰÷√nginx:
+
 ![Nginxconfig](doc/image/nginxconfig.png)
 
 ÷ÿ–¬º”‘ÿnginx£∫
