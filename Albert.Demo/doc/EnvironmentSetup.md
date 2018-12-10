@@ -4,7 +4,7 @@
 
 使用neofetch查看系统信息：
 
-![Os](doc/image/os.png)
+![Os](image/os.png)
 
 #### 安装.NET Core
 
@@ -23,7 +23,7 @@ sudo apt-get install dotnet-sdk-2.1
 
 安装完成查看是否安装成功：
 
-![Dotnetcoreversion](doc/image/dotnetcoreversion.png)
+![Dotnetcoreversion](image/dotnetcoreversion.png)
 
 #### nginx反向代理
 
@@ -35,7 +35,7 @@ apt install nginx
 
 配置nginx:
 
-![Nginxconfig](doc/image/nginxconfig.png)
+![Nginxconfig](image/nginxconfig.png)
 
 重新加载nginx：
 
@@ -61,7 +61,7 @@ apt install supervisor
 安装完成之后，在 /ect/supervisor/confg.d/ 目录下新建一个配置文件，取名为 albertdemo.conf (当前项目的名称)
 
 
-![Catconfig](doc/image/catconfig.png)
+![Catconfig](image/catconfig.png)
 
 各项配置解释：
 ```

@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.EntityFramework
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0C184BD-0E8E-4401-A3B6-65DABFD75AE8}"
 	ProjectSection(SolutionItems) = preProject
-		EnvironmentSetup.md = EnvironmentSetup.md
-		MultiplePoint.md = MultiplePoint.md
-		Readme.md = Readme.md
+		doc\EnvironmentSetup.md = doc\EnvironmentSetup.md
+		doc\MultiplePoint.md = doc\MultiplePoint.md
+		doc\UpdateProgram.md = doc\UpdateProgram.md
 	EndProjectSection
 EndProject
 Global

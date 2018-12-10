@@ -7,11 +7,11 @@
 dotnet new mvc -o aspnetApp
 ```
 
-![Dotnetmvc](doc/image/dotnetmvc.png)
+![Dotnetmvc](image/dotnetmvc.png)
 
 创建成功，生成名为aspnetApp的文件夹，进入文件夹：
 
-![Mvcfile](doc/image/mvcfile.png)
+![Mvcfile](image/mvcfile.png)
 
 修改程序监听端口，默认5000、5001已经在另外的程序中使用，执行命令：
 
@@ -20,7 +20,7 @@ vi Properties/launchSettings.json
 ```
 修改：
 
-![Port6000](doc/image/port6000.png)
+![Port6000](image/port6000.png)
 
 保存退出。
 
@@ -29,14 +29,14 @@ vi Properties/launchSettings.json
 dotnet run
 ```
 
-![Dotnetrun](doc/image/dotnetrun.png)
+![Dotnetrun](image/dotnetrun.png)
 
 可以看见程序启动监听成功，`Ctrl+C`推出程序，执行指令：
 ```
 dotnet publish
 ```
 
-![Dotnetpublish](doc/image/dotnetpublish.png)
+![Dotnetpublish](image/dotnetpublish.png)
 
 可以发现发布文件路径为`/home/dotnet/aspnetApp/bin/Debug/netcoreapp2.1/publish/`
 
@@ -47,15 +47,15 @@ mv /var/www/publish /var/www/aspnetApp
 ```
 查看复制结果：
 
-![Aspnetappwww](doc/image/aspnetappwww.png)
+![Aspnetappwww](image/aspnetappwww.png)
 
 使用supervisor来管理应用，添加配置：
 
-![Aspnetappsupervisorconfig](doc/image/aspnetappsupervisorconfig.png)
+![Aspnetappsupervisorconfig](image/aspnetappsupervisorconfig.png)
 
 新应用的监听端口设置为5000，添加nginx代理配置，现在回头查看nginx的配置，查看nginx配置目录`/etc/nginx`，
 
-![Etcnginx](doc/image/etcnginx.png)
+![Etcnginx](image/etcnginx.png)
 
 这里面的`nginx.conf`就是默认的配置文件，使用cat命令查看内容：
 ```
@@ -158,7 +158,7 @@ include /etc/nginx/conf.d/*.conf;
 
 这里为aspnetApp添加nginx的server配置：
 
-![Aspnetappnginx](doc/image/aspnetappnginx.png)
+![Aspnetappnginx](image/aspnetappnginx.png)
 
 这里配置的外部监听端口为`8081`，在上面的supervisor中配置的内部监听端口为5000，这里配置对应。
 
@@ -170,6 +170,6 @@ nginx -s reload
 
 通过浏览器访问通过IP和8081端口访问：
 
-![Aspnetapp](doc/image/aspnetapp.png)
+![Aspnetapp](image/aspnetapp.png)
 
 访问成功！！同时原有的网站也能够访问成功。按照这个思路可以将原有应用的nginx从default中抽取出来，这里为了访问简单直接通过80端口默认访问不做抽取。
