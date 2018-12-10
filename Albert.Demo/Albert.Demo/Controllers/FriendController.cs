@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Albert.Demo.Application.Friends;
+using Albert.Demo.Application.Friends.Dtos;
+using Albert.Demo.Domain.Friends;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Albert.Demo.Application.Friends;
-using Albert.Demo.Application.Friends.Dtos;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Albert.Demo.Controllers
 {
@@ -33,7 +34,7 @@ namespace Albert.Demo.Controllers
         }
 
         // GET: Friend/Create
-        public  ActionResult Create()
+        public ActionResult Create()
         {
             return View();
         }
@@ -41,11 +42,11 @@ namespace Albert.Demo.Controllers
         // POST: Friend/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create([Bind("NickName,RelationType,Description")] Friend friend)
         {
             try
             {
-                // TODO: Add insert logic here
+                await friendAppService.Create(friend);
 
                 return RedirectToAction(nameof(Index));
             }

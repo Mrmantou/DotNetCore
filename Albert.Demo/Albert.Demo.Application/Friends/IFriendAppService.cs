@@ -10,5 +10,7 @@ namespace Albert.Demo.Application.Friends
     public interface IFriendAppService
     {
         Task<List<Friend>> GetFriends(GetFriendArg input);
+
+        Task Create(Friend friend);
     }
 }
