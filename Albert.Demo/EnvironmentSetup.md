@@ -60,14 +60,16 @@ apt install supervisor
 
 安装完成之后，在 /ect/supervisor/confg.d/ 目录下新建一个配置文件，取名为 albertdemo.conf (当前项目的名称)
 
-![supervisorconfig](doc/image/catconfig.png)
+
+![Catconfig](doc/image/catconfig.png)
 
 各项配置解释：
 ```
 [program:TestCore]
 command=dotnet TestCore.dll #要执行的命令
 directory=/home/xx/TestCore #命令执行的目录
-environment=ASPNETCORE__ENVIRONMENT=Production #环境变量
+environment=ASPNETCORE_ENVIRONMENT="Development" #环境变量
+environment=ASPNETCORE_URLS="http://localhost:6000" #启动程序监听的端口号
 user=www-data #进程执行的用户身份
 stopsignal=INT
 autostart=true #是否自动启动
@@ -77,7 +79,7 @@ stderr_logfile=/var/log/TestCore.err.log #标准错误日志
 stdout_logfile=/var/log/TestCore.out.log #标准输出日志
 ```
 
-重新加载配置：
+注意这里添加的两个环境变量`ASPNETCORE_ENVIRONMENT`、`ASPNETCORE_URLS`，这是asp.net core中会读取的环境变量。重新加载配置：
 
 ```
 service supervisor stop
