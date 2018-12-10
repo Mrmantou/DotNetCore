@@ -20,6 +20,7 @@
 ![Upload](doc/image/upload.png)
 
 这里将文件系统上传到`/home`文件夹中，在控制台通过命令查看文件夹
+
 ![Listfolder](doc/image/listfolder.png)
 
 #### 更新程序
