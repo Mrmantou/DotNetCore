@@ -70,11 +70,16 @@ namespace Albert.Demo.Controllers
         // POST: UrlNav/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(Guid id, [Bind("Id,Title,Classify,Url,Description")] UrlNav urlNav)
         {
+            if (id != urlNav.Id)
+            {
+                return NotFound();
+            }
+
             try
             {
-                // TODO: Add update logic here
+                await urlNavAppService.Update(urlNav);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -84,5 +89,39 @@ namespace Albert.Demo.Controllers
             }
         }
 
+        // GET: Default/Delete/5
+        public async Task<ActionResult> Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var urlNav = await urlNavAppService.GetUrlNavs(new GetUrlNavArg { Id = id.Value });
+
+            if (urlNav == null || urlNav.Count() == 0)
+            {
+                return NotFound();
+            }
+
+            return View(urlNav.First());
+        }
+
+        // POST: Default/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task< ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await urlNavAppService.Delete(id);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

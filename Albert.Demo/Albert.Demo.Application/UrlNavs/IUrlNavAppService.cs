@@ -11,6 +11,10 @@ namespace Albert.Demo.Application.UrlNavs
     {
         Task<List<UrlNav>> GetUrlNavs(GetUrlNavArg input);
 
-        Task Create(UrlNav  urlNav);
+        Task Create(UrlNav urlNav);
+
+        Task Update(UrlNav urlNav);
+
+        Task Delete(Guid id);
     }
 }

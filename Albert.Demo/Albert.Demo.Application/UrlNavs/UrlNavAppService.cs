@@ -15,6 +15,7 @@ namespace Albert.Demo.Application.UrlNavs
     {
         private readonly IRepository<UrlNav, Guid> repository;
         private readonly IUnitOfWork unitOfWork;
+
         public UrlNavAppService(IRepository<UrlNav, Guid> repository, IUnitOfWork unitOfWork)
         {
             this.repository = repository;
@@ -33,6 +34,18 @@ namespace Albert.Demo.Application.UrlNavs
                 .WhereIf(!string.IsNullOrEmpty(input.Title), u => u.Title.Contains(input.Title))
                 .WhereIf(input.Id.HasValue, u => u.Id == input.Id.Value)
                 .ToListAsync();
+        }
+
+        public async Task Update(UrlNav urlNav)
+        {
+            await repository.UpdateAsync(urlNav);
+            await unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task Delete(Guid id)
+        {
+            await repository.DeleteAsync(id);
+            await unitOfWork.SaveChangesAsync();
         }
     }
 }
