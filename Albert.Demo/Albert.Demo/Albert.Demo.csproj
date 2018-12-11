@@ -16,10 +16,4 @@
     <ProjectReference Include="..\Albert.EntityFrameworkCore\Albert.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Albert.Demo.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
