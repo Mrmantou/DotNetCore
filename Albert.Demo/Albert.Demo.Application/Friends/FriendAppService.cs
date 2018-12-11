@@ -32,7 +32,7 @@ namespace Albert.Demo.Application.Friends
         public async Task Create(Friend friend)
         {
             await repository.InsertAsync(friend);
-            unitOfWork.SaveChanges();
+            await unitOfWork.SaveChangesAsync();
         }
     }
 }

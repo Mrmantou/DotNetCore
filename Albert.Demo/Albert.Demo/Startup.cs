@@ -1,4 +1,5 @@
 ﻿using Albert.Demo.Application.Friends;
+using Albert.Demo.Application.UrlNavs;
 using Albert.Demo.EntityFramework.Sqlite;
 using Albert.Domain.Repositories;
 using Albert.Domain.Uow;
@@ -36,7 +37,7 @@ namespace Albert.Demo
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<DemoContext>(options => options.UseSqlite(Configuration.GetConnectionString("DemoDefault")));
@@ -47,6 +48,7 @@ namespace Albert.Demo
             services.AddTransient(typeof(IRepository<,>), typeof(DemoRepository<,>));
 
             services.AddTransient<IFriendAppService, FriendAppService>();
+            services.AddTransient<IUrlNavAppService, UrlNavAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +74,6 @@ namespace Albert.Demo
                     name: "default",
                     template: "{controller=Demo}/{action=Index}/{id?}");
             });
-            
         }
     }
 }
