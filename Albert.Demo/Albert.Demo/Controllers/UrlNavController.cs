@@ -1,6 +1,7 @@
 ﻿using Albert.Demo.Application.UrlNavs;
 using Albert.Demo.Application.UrlNavs.Dtos;
 using Albert.Demo.Domain.UrlNavs;
+using Albert.Demo.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -104,14 +105,19 @@ namespace Albert.Demo.Controllers
                 return NotFound();
             }
 
-            return View(urlNav.First());
+            return View(new UrlNavDeleteViewModel { UrlNav = urlNav.First() });
         }
 
         // POST: Default/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task< ActionResult> Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id, string token)
         {
+            if (token != "@####@")
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             try
             {
                 await urlNavAppService.Delete(id);
