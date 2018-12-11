@@ -32,10 +32,28 @@ sudo apt-get install dotnet-sdk-2.1
 ```
 apt install nginx
 ```
+安装完成，在/var目录下生成www文件夹，其权限为：
+
+![Nginxwww](nginxwww.png)
 
 配置nginx:
 
 ![Nginxconfig](image/nginxconfig.png)
+
+```
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://localhost:6000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection keep-alive;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
 
 重新加载nginx：
 

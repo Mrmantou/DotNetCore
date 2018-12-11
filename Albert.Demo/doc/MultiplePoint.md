@@ -53,6 +53,21 @@ mv /var/www/publish /var/www/aspnetApp
 
 ![Aspnetappsupervisorconfig](image/aspnetappsupervisorconfig.png)
 
+```
+[program:Albert.Demo]
+command=dotnet Albert.Demo.dll
+directory=/var/www/albertdemo
+environment=ASPNETCORE_ENVIRONMENT="Development"
+environment=ASPNETCORE_URLS="http://localhost:6000"
+user=www-data
+stopsignal=INT
+autostart=true
+autorestart=true
+startsecs=1
+stderr_logfile=/var/log/Albert.Demo.err.log
+stdout_logfile=/var/log/Albert.Demo.out.log
+```
+
 新应用的监听端口设置为5000，添加nginx代理配置，现在回头查看nginx的配置，查看nginx配置目录`/etc/nginx`，
 
 ![Etcnginx](image/etcnginx.png)
