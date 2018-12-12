@@ -33,9 +33,10 @@ namespace Albert.Demo.Application.UrlNavs
         {
             return await repository.GetAll()
                 .WhereIf(!string.IsNullOrEmpty(input.Title), u => u.Title.Contains(input.Title))
+                .WhereIf(!string.IsNullOrEmpty(input.Classify), u => u.Classify == input.Classify)
                 .WhereIf(input.Id.HasValue, u => u.Id == input.Id.Value)
-                .OrderBy(u=>u.Classify)
-                .ThenBy(u=>u.Title)
+                .OrderBy(u => u.Classify)
+                .ThenBy(u => u.Title)
                 .ToListAsync();
         }
 
@@ -49,6 +50,14 @@ namespace Albert.Demo.Application.UrlNavs
         {
             await repository.DeleteAsync(id);
             await unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task<List<string>> GetClassifyComboboxItems()
+        {
+            return await repository.GetAll()
+                 .Select(u => u.Classify)
+                 .Distinct()
+                 .ToListAsync();
         }
     }
 }

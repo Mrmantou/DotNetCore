@@ -16,5 +16,7 @@ namespace Albert.Demo.Application.UrlNavs
         Task Update(UrlNav urlNav);
 
         Task Delete(Guid id);
+
+        Task<List<string>> GetClassifyComboboxItems();
     }
 }

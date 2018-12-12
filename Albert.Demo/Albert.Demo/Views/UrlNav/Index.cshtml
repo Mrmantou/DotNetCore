@@ -1,19 +1,43 @@
-﻿@model IEnumerable<Albert.Demo.Domain.UrlNavs.UrlNav>
+﻿@*@model IEnumerable<Albert.Demo.Domain.UrlNavs.UrlNav>*@
+@model Albert.Demo.Models.UrlNavs.IndexViewModel
 
 @{
     ViewData["Title"] = "Url Navigation";
 }
 
-<h2>Url Navigation</h2>
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/js/views/urlNavs/index.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/js/views/urlNavs/index.min.js"></script>
+    </environment>
+}
 
 <p>
-    <a asp-action="Create">Add New Url</a>
+    <h2>
+        Url Navigation
+    </h2>
+    <span><a class="btn btn-primary btn-xs" asp-action="Create">Add New Url</a></span>
+    <span class="pull-right">
+        @Html.DropDownList(
+            "Classify",
+            Model.Classifys,
+            new {
+                @class = "form-control",
+                id = "ClassifyCombobox"
+            })
+    </span>
 </p>
+
+<br />
 
 <div class="row">
     <div>
         <ul class="list-group">
-            @foreach (var urlNav in Model)
+            @foreach (var urlNav in Model.UrlNavs)
             {
                 <li class="list-group-item">
                     <span class="pull-right label label-info"><a asp-action="Edit" asp-route-id="@urlNav.Id">Edit</a></span>

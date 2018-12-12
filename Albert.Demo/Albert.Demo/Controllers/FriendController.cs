@@ -20,13 +20,13 @@ namespace Albert.Demo.Controllers
         }
 
         // GET: Friend
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(GetFriendArg input)
         {
-            var friends = await friendAppService.GetFriends(new GetFriendArg());
+            var friends = await friendAppService.GetFriends(input);
 
             return View(friends);
         }
-        
+
         // GET: Friend/Create
         public ActionResult Create()
         {

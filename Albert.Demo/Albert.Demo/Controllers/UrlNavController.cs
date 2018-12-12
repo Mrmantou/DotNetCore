@@ -1,9 +1,10 @@
 ﻿using Albert.Demo.Application.UrlNavs;
 using Albert.Demo.Application.UrlNavs.Dtos;
 using Albert.Demo.Domain.UrlNavs;
-using Albert.Demo.Models;
+using Albert.Demo.Models.UrlNavs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,15 @@ namespace Albert.Demo.Controllers
         }
 
         // GET: UrlNav
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(GetUrlNavArg input)
         {
-            var urlNavs = await urlNavAppService.GetUrlNavs(new GetUrlNavArg());
+            var urlNavs = await urlNavAppService.GetUrlNavs(input);
+            var classifys = (await urlNavAppService.GetClassifyComboboxItems())
+                .Select(c => new SelectListItem { Text = c, Value = c }).ToList();
 
-            return View(urlNavs);
+            classifys.Insert(0, new SelectListItem { Value = string.Empty, Text = "--- All ---", Selected = true });
+
+            return View(new IndexViewModel(urlNavs, classifys));
         }
 
         // GET: UrlNav/Create
@@ -105,7 +110,7 @@ namespace Albert.Demo.Controllers
                 return NotFound();
             }
 
-            return View(new UrlNavDeleteViewModel { UrlNav = urlNav.First() });
+            return View(new DeleteViewModel { UrlNav = urlNav.First() });
         }
 
         // POST: Default/Delete/5

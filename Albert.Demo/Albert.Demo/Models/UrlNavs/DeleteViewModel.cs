@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Albert.Demo.Models
+namespace Albert.Demo.Models.UrlNavs
 {
-    public class UrlNavDeleteViewModel
+    public class DeleteViewModel
     {
         public UrlNav UrlNav { get; set; }
 

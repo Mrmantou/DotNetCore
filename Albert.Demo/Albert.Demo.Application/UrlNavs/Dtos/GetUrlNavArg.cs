@@ -11,5 +11,10 @@ namespace Albert.Demo.Application.UrlNavs.Dtos
         /// 标题
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// 分类
+        /// </summary>
+        public string Classify { get; set; }
     }
 }
