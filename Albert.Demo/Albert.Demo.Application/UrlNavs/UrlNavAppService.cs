@@ -6,6 +6,7 @@ using Albert.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,8 @@ namespace Albert.Demo.Application.UrlNavs
             return await repository.GetAll()
                 .WhereIf(!string.IsNullOrEmpty(input.Title), u => u.Title.Contains(input.Title))
                 .WhereIf(input.Id.HasValue, u => u.Id == input.Id.Value)
+                .OrderBy(u=>u.Classify)
+                .ThenBy(u=>u.Title)
                 .ToListAsync();
         }
 
