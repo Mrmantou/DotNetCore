@@ -78,7 +78,7 @@ namespace Albert.Demo.Controllers
         // POST: UrlNav/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Guid id, [Bind("Id,Title,Classify,Url,Description")] UrlNav urlNav)
+        public async Task<ActionResult> Edit(Guid id, [Bind("Id,Title,Classify,Url,Description,CreateTime")] UrlNav urlNav)
         {
             if (id != urlNav.Id)
             {
