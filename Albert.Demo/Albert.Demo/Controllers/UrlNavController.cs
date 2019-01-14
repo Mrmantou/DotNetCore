@@ -45,6 +45,8 @@ namespace Albert.Demo.Controllers
         {
             try
             {
+                urlNav.CreateTime = DateTime.Now;
+                urlNav.UpdateTime = DateTime.Now;
                 await urlNavAppService.Create(urlNav);
 
                 return RedirectToAction(nameof(Index));
@@ -85,6 +87,7 @@ namespace Albert.Demo.Controllers
 
             try
             {
+                urlNav.UpdateTime = DateTime.Now;
                 await urlNavAppService.Update(urlNav);
 
                 return RedirectToAction(nameof(Index));
@@ -133,6 +136,25 @@ namespace Albert.Demo.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: UrlNav/Time
+        /// <summary>
+        /// 查看创建和修改时间列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> Time()
+        {
+            var urlNavs = await urlNavAppService.GetUrlNavs(new GetUrlNavArg());
+            var timeDtos = from urlNav in urlNavs
+                           select new TimeDto
+                           {
+                               Title = urlNav.Title,
+                               CreateTime = urlNav.CreateTime,
+                               UpdateTime = urlNav.UpdateTime
+                           };
+
+            return View(new TimeViewModel(timeDtos.ToList()));
         }
     }
 }

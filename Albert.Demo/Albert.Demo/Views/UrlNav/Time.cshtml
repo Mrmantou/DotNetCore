@@ -1,0 +1,45 @@
+﻿@model Albert.Demo.Models.UrlNavs.TimeViewModel
+
+@{
+    ViewData["Title"] = "Url Navigation Time";
+}
+
+<h2>
+    Url Navigation Time
+</h2>
+
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeDtos[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeDtos[0].CreateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeDtos[0].UpdateTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TimeDtos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateTime)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
