@@ -1,7 +1,7 @@
 ﻿using Albert.Demo.Application.UrlNavs;
 using Albert.Demo.Application.UrlNavs.Dtos;
 using Albert.Demo.Domain.UrlNavs;
-using Albert.Demo.Models.UrlNavs;
+using Albert.Demo.Web.Models.UrlNavs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Albert.Demo.Controllers
+namespace Albert.Demo.Web.Controllers
 {
     public class UrlNavController : Controller
     {

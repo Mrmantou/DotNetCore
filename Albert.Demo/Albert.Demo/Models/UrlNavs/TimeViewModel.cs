@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Albert.Demo.Models.UrlNavs
+namespace Albert.Demo.Web.Models.UrlNavs
 {
     public class TimeViewModel
     {

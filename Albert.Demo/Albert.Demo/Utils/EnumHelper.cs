@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Albert.Demo.Utils
+namespace Albert.Demo.Web.Utils
 {
     /// <summary>
     /// Enum帮助类

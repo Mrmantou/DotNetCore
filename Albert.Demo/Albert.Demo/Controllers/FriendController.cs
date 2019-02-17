@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Albert.Demo.Controllers
+namespace Albert.Demo.Web.Controllers
 {
     public class FriendController : Controller
     {
