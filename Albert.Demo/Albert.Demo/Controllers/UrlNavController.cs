@@ -25,7 +25,8 @@ namespace Albert.Demo.Controllers
         {
             var urlNavs = await urlNavAppService.GetUrlNavs(input);
             var classifys = (await urlNavAppService.GetClassifyComboboxItems())
-                .Select(c => new SelectListItem { Text = c, Value = c }).ToList();
+                .Select(c => new SelectListItem { Text = c, Value = c })
+                .OrderBy(c=>c.Text).ToList();
 
             classifys.Insert(0, new SelectListItem { Value = string.Empty, Text = "--- All ---", Selected = true });
 
