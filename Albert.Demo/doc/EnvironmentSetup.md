@@ -81,6 +81,7 @@ apt install supervisor
 
 ![Catconfig](image/catconfig.png)
 
+
 ¸÷ÏîÅäÖÃ½âÊÍ£º
 ```
 [program:TestCore]

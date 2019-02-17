@@ -1,7 +1,7 @@
 ## 更新发布
 
 #### 发布文件系统
-选择Albert.Demo项目，右键点击发布，选择文件系统发布
+选择Albert.Demo项目(在最新项目代码中已经重命名为**Albert.Demo.Web**)，右键点击发布，选择文件系统发布
 
 ![Publish](image/publish.png)
 

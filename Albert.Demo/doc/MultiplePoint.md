@@ -52,20 +52,19 @@ mv /var/www/publish /var/www/aspnetApp
 使用supervisor来管理应用，添加配置：
 
 ![Aspnetappsupervisorconfig](image/aspnetappsupervisorconfig.png)
-
 ```
-[program:Albert.Demo]
-command=dotnet Albert.Demo.dll
-directory=/var/www/albertdemo
+[program:aspnetApp]
+command=dotnet aspnetApp.dll
+directory=/var/www/aspnetApp
 environment=ASPNETCORE_ENVIRONMENT="Development"
-environment=ASPNETCORE_URLS="http://localhost:6000"
-user=www-data
+environment=ASPNETCORE_URLS="http://localhost:5000"
+user=root
 stopsignal=INT
 autostart=true
 autorestart=true
 startsecs=1
-stderr_logfile=/var/log/Albert.Demo.err.log
-stdout_logfile=/var/log/Albert.Demo.out.log
+stderr_logfile=/var/log/aspnetApp.err.log
+stdout_logfile=/var/log/aspnetApp.out.log
 ```
 
 新应用的监听端口设置为5000，添加nginx代理配置，现在回头查看nginx的配置，查看nginx配置目录`/etc/nginx`，
