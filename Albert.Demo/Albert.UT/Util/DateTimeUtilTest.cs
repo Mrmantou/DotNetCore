@@ -11,7 +11,7 @@ namespace Albert.Util
         [Test]
         public void GetPeriodStart_Test()
         {
-            var date= new DateTime(2019, 3, 27);
+            var date = new DateTime(2019, 3, 27);
 
             var dateResult = DateTimeUtil.GetPeriodStart(date, DateFrequency.Weekly);
             Assert.AreEqual(new DateTime(2019, 3, 24), dateResult);
@@ -66,6 +66,18 @@ namespace Albert.Util
             var dateResult = DateTimeUtil.GetQuarterStartDate(date);
 
             Assert.AreEqual(new DateTime(date.Year, 1, 1), dateResult);
+
+            date = new DateTime(2019, 9, 27);
+
+            dateResult = DateTimeUtil.GetQuarterStartDate(date);
+
+            Assert.AreEqual(new DateTime(date.Year, 7, 1), dateResult);
+
+            date = new DateTime(2019, 11, 27);
+
+            dateResult = DateTimeUtil.GetQuarterStartDate(date);
+
+            Assert.AreEqual(new DateTime(date.Year, 10, 1), dateResult);
         }
 
         [Test]
@@ -78,6 +90,12 @@ namespace Albert.Util
             Assert.AreEqual(new DateTime(date.Year, 1, 1), dateResult);
 
             date = new DateTime(2019, 8, 27);
+
+            dateResult = DateTimeUtil.GetHalfYearStartDate(date);
+
+            Assert.AreEqual(new DateTime(date.Year, 7, 1), dateResult);
+
+            date = new DateTime(2019, 12, 27);
 
             dateResult = DateTimeUtil.GetHalfYearStartDate(date);
 
