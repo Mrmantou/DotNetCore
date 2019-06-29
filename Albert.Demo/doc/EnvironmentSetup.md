@@ -76,7 +76,7 @@ nginx -s stop     # 停止 Nginx
 apt install supervisor
 ```
 
-安装完成之后，在 /ect/supervisor/confg.d/ 目录下新建一个配置文件，取名为 albertdemo.conf (当前项目的名称)
+安装完成之后，在 /ect/supervisor/conf.d/ 目录下新建一个配置文件，取名为 albertdemo.conf (当前项目的名称)
 
 
 ![Catconfig](image/catconfig.png)
