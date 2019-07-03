@@ -24,7 +24,18 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvcCore()
+                .AddAuthorization() 
+                .AddJsonFormatters();
+
+            services.AddAuthentication("Bearer") //adds the authentication services to DI and configures "Bearer" as the default scheme.
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+
+                    options.Audience = "api1";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +45,8 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication(); //adds the authentication middleware to the pipeline so authentication will be performed automatically on every call into the host.
 
             app.UseMvc();
         }
