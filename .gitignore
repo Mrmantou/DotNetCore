@@ -196,3 +196,5 @@ ModelManifest.xml
 /IdentityServer4/quickstart/src/IdentityServer/identityserver4_log.txt
 /IdentityServer4/quickstart/_01_ClientCredentials/src/IdentityServer/tempkey.rsa
 /IdentityServer4/quickstart/_01_ClientCredentials/src/IdentityServer/identityserver4_log.txt
+/IdentityServer4/quickstart/_02_Passwords/src/IdentityServer/tempkey.rsa
+/IdentityServer4/quickstart/_02_Passwords/src/IdentityServer/identityserver4_log.txt
