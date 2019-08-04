@@ -38,10 +38,11 @@ namespace MvcClient
 
             services.AddAuthentication(options => // add the authentication services to DI
                 {
-                    options.DefaultScheme = "Cookies"; options.DefaultChallengeScheme = "oidc";
+                    options.DefaultScheme = "Cookies";
+                    options.DefaultChallengeScheme = "oidc";
                 })
                 .AddCookie("Cookies") // add handler that can process cookies.
-                .AddOpenIdConnect("iodc", options => // configure the handler that perform the OpenID Connection protocol.
+                .AddOpenIdConnect("oidc", options => // configure the handler that perform the OpenID Connection protocol.
                 {
                     options.Authority = "http://localhost:5000"; // indicates that we are trusting IdentityServer.
                     options.RequireHttpsMetadata = false;
@@ -68,12 +69,14 @@ namespace MvcClient
             app.UseStaticFiles();
             //app.UseCookiePolicy();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvcWithDefaultRoute();
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }
