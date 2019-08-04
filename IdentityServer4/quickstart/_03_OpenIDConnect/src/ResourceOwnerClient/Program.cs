@@ -4,7 +4,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Client
+namespace ResourceOwnerClient
 {
     class Program
     {
@@ -20,11 +20,14 @@ namespace Client
             }
 
             // request token
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
             {
                 Address = discover.TokenEndpoint,
-                ClientId = "client",
+                ClientId = "ro.client",
                 ClientSecret = "secret",
+
+                UserName = "alice",
+                Password = "password",
                 Scope = "api1"
             });
 
