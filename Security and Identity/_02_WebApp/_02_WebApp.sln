@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWebApp", "RazorWebApp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWebAppWithAuth", "RazorWebAppWithAuth\RazorWebAppWithAuth.csproj", "{138B9DDF-C36F-43C6-830B-7395E85DAD3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApp", "MvcWebApp\MvcWebApp.csproj", "{4E206E6A-7444-4967-8317-51FA60FFC99A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcWebApp", "MvcWebApp\MvcWebApp.csproj", "{4E206E6A-7444-4967-8317-51FA60FFC99A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebAppWithAuth", "MvcWebAppWithAuth\MvcWebAppWithAuth.csproj", "{2EE0E513-9888-465F-B5AA-8ECF58EE88D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4E206E6A-7444-4967-8317-51FA60FFC99A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E206E6A-7444-4967-8317-51FA60FFC99A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E206E6A-7444-4967-8317-51FA60FFC99A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE0E513-9888-465F-B5AA-8ECF58EE88D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE0E513-9888-465F-B5AA-8ECF58EE88D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE0E513-9888-465F-B5AA-8ECF58EE88D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE0E513-9888-465F-B5AA-8ECF58EE88D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
