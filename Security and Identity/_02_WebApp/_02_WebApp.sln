@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmptyWebApp", "EmptyWebApp\EmptyWebApp.csproj", "{616D99F6-FA87-4469-B2C5-1C9C9E7CD875}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorWebApp", "RazorWebApp\RazorWebApp.csproj", "{01881C79-1439-4E1D-8108-F55CAE7C1127}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWebApp", "RazorWebApp\RazorWebApp.csproj", "{01881C79-1439-4E1D-8108-F55CAE7C1127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorWebAppWithAuth", "RazorWebAppWithAuth\RazorWebAppWithAuth.csproj", "{138B9DDF-C36F-43C6-830B-7395E85DAD3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{01881C79-1439-4E1D-8108-F55CAE7C1127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01881C79-1439-4E1D-8108-F55CAE7C1127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01881C79-1439-4E1D-8108-F55CAE7C1127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138B9DDF-C36F-43C6-830B-7395E85DAD3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138B9DDF-C36F-43C6-830B-7395E85DAD3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138B9DDF-C36F-43C6-830B-7395E85DAD3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138B9DDF-C36F-43C6-830B-7395E85DAD3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
