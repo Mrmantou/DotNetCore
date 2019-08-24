@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Security.Claims;
+using System.Security;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebApp
 {
@@ -61,17 +64,35 @@ namespace WebApp
                 // User settings.
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
+
+                // ClaimsIdentity settings.
+                options.ClaimsIdentity.RoleClaimType = ClaimTypes.Role;
+                options.ClaimsIdentity.SecurityStampClaimType = "AspNet.Identity.SecurityStamp";
+                options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier;
+                options.ClaimsIdentity.UserNameClaimType = ClaimTypes.Name;
+
+                // SignIn settings.
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
             });
 
             services.ConfigureApplicationCookie(options =>
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
+                options.Cookie.Name = "AppCookieName";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
                 options.LoginPath = "/Identity/Account/Login";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                // ReturnUrlParameter requires
+                // using Microsoft.AspNetCore.Authentication.Cookies
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
                 options.SlidingExpiration = true;
+            });
+
+            services.Configure<PasswordHasherOptions>(options =>
+            {
+                options.IterationCount = 12000;
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
