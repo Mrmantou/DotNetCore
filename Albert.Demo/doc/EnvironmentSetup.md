@@ -6,7 +6,7 @@
 
 ![Os](image/os.png)
 
-#### 安装.NET Core
+#### [安装.NET Core](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)
 
 注册微软密钥
 ```
