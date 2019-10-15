@@ -1,14 +1,11 @@
 ﻿using Albert.Domain.Uow;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Albert.EntityFrameworkCore.Uow
 {
-    public class UnitOfWork<TDbContext> : IUnitOfWork
-        where TDbContext : DbContext
+    public class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext
     {
         private readonly TDbContext dbContext;
 

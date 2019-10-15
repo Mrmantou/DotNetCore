@@ -14,20 +14,24 @@ namespace Albert.Demo.EntityFramework.Sqlite.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "3.0.0");
 
             modelBuilder.Entity("Albert.Demo.Domain.Friends.Friend", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(500);
 
                     b.Property<string>("NickName")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.Property<int>("RelationType");
+                    b.Property<int>("RelationType")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -37,22 +41,29 @@ namespace Albert.Demo.EntityFramework.Sqlite.Migrations
             modelBuilder.Entity("Albert.Demo.Domain.UrlNavs.UrlNav", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Classify")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(20);
 
-                    b.Property<DateTime>("CreateTime");
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(500);
 
                     b.Property<string>("Title")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(300);
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Url")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(100);
 
                     b.HasKey("Id");

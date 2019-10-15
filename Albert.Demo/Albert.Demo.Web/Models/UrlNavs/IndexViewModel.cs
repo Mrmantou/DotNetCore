@@ -1,9 +1,6 @@
 ﻿using Albert.Demo.Domain.UrlNavs;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Albert.Demo.Web.Models.UrlNavs
 {

@@ -1,9 +1,6 @@
 ﻿using Albert.Domain.Entities;
 using Albert.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Albert.EntityFrameworkCore.Repositories
 {

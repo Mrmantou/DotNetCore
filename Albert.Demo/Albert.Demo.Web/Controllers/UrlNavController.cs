@@ -2,11 +2,9 @@
 using Albert.Demo.Application.UrlNavs.Dtos;
 using Albert.Demo.Domain.UrlNavs;
 using Albert.Demo.Web.Models.UrlNavs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +24,7 @@ namespace Albert.Demo.Web.Controllers
             var urlNavs = await urlNavAppService.GetUrlNavs(input);
             var classifys = (await urlNavAppService.GetClassifyComboboxItems())
                 .Select(c => new SelectListItem { Text = c, Value = c })
-                .OrderBy(c=>c.Text).ToList();
+                .OrderBy(c => c.Text).ToList();
 
             classifys.Insert(0, new SelectListItem { Value = string.Empty, Text = "--- All ---", Selected = true });
 

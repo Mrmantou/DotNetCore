@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Albert.Demo.Application.Friends.Dtos
+﻿namespace Albert.Demo.Application.Friends.Dtos
 {
     public class GetFriendArg
     {

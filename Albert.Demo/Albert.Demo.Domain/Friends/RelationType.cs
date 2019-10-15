@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Albert.Demo.Domain.Friends
 {
@@ -26,7 +23,7 @@ namespace Albert.Demo.Domain.Friends
         /// 老师
         /// </summary>
         [Description("老师")]
-        Teacher =4,
+        Teacher = 4,
         /// <summary>
         /// 其他
         /// </summary>

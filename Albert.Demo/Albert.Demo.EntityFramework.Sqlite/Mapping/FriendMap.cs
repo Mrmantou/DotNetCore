@@ -2,13 +2,10 @@
 using Albert.EntityFrameworkCore.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Albert.Demo.EntityFramework.Sqlite
+namespace Albert.Demo.EntityFramework.Sqlite.Mapping
 {
-    public class FriendMap : AlbertEntityTypeConfiguration<Friend>
+    class FriendMap : AlbertEntityTypeConfiguration<Friend>
     {
         public override void Configure(EntityTypeBuilder<Friend> builder)
         {

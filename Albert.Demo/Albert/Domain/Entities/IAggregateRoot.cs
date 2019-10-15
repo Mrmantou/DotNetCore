@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Albert.Domain.Entities
+﻿namespace Albert.Domain.Entities
 {
     public interface IAggregateRoot : IAggregateRoot<int>, IEntity
     {

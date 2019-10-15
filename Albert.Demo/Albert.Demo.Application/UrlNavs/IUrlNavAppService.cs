@@ -2,7 +2,6 @@
 using Albert.Demo.Domain.UrlNavs;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Albert.Demo.Application.UrlNavs

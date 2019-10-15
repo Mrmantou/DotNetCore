@@ -1,5 +1,4 @@
 ﻿using Albert.Domain.Entities;
-using System;
 
 namespace Albert.Demo.Domain.Friends
 {

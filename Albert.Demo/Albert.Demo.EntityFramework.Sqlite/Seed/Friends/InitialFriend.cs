@@ -1,8 +1,5 @@
 ﻿using Albert.Demo.Domain.Friends;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Albert.Demo.EntityFramework.Sqlite.Seed.Friends
 {

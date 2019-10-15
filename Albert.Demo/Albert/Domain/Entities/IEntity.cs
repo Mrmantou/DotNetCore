@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Albert.Domain.Entities
+﻿namespace Albert.Domain.Entities
 {
     /// <summary>
     /// Defines interface for base entity type. All entities in the system must implement this interface.

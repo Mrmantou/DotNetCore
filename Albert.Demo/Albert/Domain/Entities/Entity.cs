@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Albert.Domain.Entities
 {
@@ -88,7 +87,7 @@ namespace Albert.Domain.Entities
         {
             return $"[{GetType().Name} {Id}]";
         }
-        
+
         public static bool operator ==(Entity<TPrimaryKey> left, Entity<TPrimaryKey> right)
         {
             if (Equals(left, null))

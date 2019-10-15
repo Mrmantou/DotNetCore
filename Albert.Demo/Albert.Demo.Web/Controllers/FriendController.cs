@@ -1,11 +1,7 @@
 ﻿using Albert.Demo.Application.Friends;
 using Albert.Demo.Application.Friends.Dtos;
 using Albert.Demo.Domain.Friends;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Albert.Demo.Web.Controllers

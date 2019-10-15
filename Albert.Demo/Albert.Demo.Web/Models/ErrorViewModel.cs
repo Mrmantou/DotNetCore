@@ -1,5 +1,3 @@
-using System;
-
 namespace Albert.Demo.Web.Models
 {
     public class ErrorViewModel

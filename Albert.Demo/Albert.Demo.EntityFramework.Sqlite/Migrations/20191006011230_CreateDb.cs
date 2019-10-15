@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Albert.Demo.EntityFramework.Sqlite.Migrations
 {
-    public partial class InitCreate : Migration
+    public partial class CreateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,7 +30,9 @@ namespace Albert.Demo.EntityFramework.Sqlite.Migrations
                     Title = table.Column<string>(maxLength: 300, nullable: true),
                     Classify = table.Column<string>(maxLength: 20, nullable: true),
                     Url = table.Column<string>(maxLength: 100, nullable: true),
-                    Description = table.Column<string>(maxLength: 500, nullable: true)
+                    Description = table.Column<string>(maxLength: 500, nullable: true),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    UpdateTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
