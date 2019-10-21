@@ -7,23 +7,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.Web", "Albert.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{FF5B79BE-C837-44C4-B69C-5C84DAB82A7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert", "Albert\Albert.csproj", "{2CD42C47-566B-4983-A339-88AC33A98BC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert", "Albert\Albert.csproj", "{2CD42C47-566B-4983-A339-88AC33A98BC5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34829797-E0AE-4E71-822A-E5EC1D15090F}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		Dockerfile = Dockerfile
 		doc\EnvironmentSetup.md = doc\EnvironmentSetup.md
 		doc\MultiplePoint.md = doc\MultiplePoint.md
 		Readme.md = Readme.md
 		doc\UpdateProgram.md = doc\UpdateProgram.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.Demo.Application", "Albert.Demo.Application\Albert.Demo.Application.csproj", "{66F72521-09D2-4396-BFE7-BEB7C4CB855D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.Application", "Albert.Demo.Application\Albert.Demo.Application.csproj", "{66F72521-09D2-4396-BFE7-BEB7C4CB855D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.Demo.Domain", "Albert.Demo.Domain\Albert.Demo.Domain.csproj", "{10AD6EA1-91B5-4F20-A746-72C763609C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.Domain", "Albert.Demo.Domain\Albert.Demo.Domain.csproj", "{10AD6EA1-91B5-4F20-A746-72C763609C42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.Demo.EntityFramework.Sqlite", "Albert.Demo.EntityFramework.Sqlite\Albert.Demo.EntityFramework.Sqlite.csproj", "{7B92EE23-B836-4B9A-8803-E3BF1882E621}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.EntityFramework.Sqlite", "Albert.Demo.EntityFramework.Sqlite\Albert.Demo.EntityFramework.Sqlite.csproj", "{7B92EE23-B836-4B9A-8803-E3BF1882E621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.EntityFrameworkCore", "Albert.EntityFrameworkCore\Albert.EntityFrameworkCore.csproj", "{84B28260-10EB-49B8-9F2A-41C0DAB3D4A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.EntityFrameworkCore", "Albert.EntityFrameworkCore\Albert.EntityFrameworkCore.csproj", "{84B28260-10EB-49B8-9F2A-41C0DAB3D4A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
