@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                No.
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TimeDtos[0].Title)
             </th>
             <th>
@@ -29,6 +32,9 @@
         @foreach (var item in Model.TimeDtos)
         {
             <tr>
+                <td>
+                    @Model.Index;
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
