@@ -32,7 +32,7 @@ namespace Albert.Demo.Web.Controllers
         }
 
         // GET: UrlNav/Create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             return View();
         }

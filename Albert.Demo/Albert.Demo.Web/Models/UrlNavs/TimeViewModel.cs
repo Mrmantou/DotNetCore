@@ -5,7 +5,7 @@ namespace Albert.Demo.Web.Models.UrlNavs
 {
     public class TimeViewModel
     {
-        private int index = 0;
+        private int index = 1;
         public int Index { get { return index++; } }
         public IReadOnlyList<TimeDto> TimeDtos { get; set; }
         public TimeViewModel(IReadOnlyList<TimeDto> timeDtos)

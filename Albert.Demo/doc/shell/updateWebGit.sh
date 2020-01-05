@@ -1,10 +1,12 @@
 #!/bin/bash
 
+workdir=$(cd $(dirname $0); pwd)
+
 gitCloneUrl="https://github.com/Mrmantou/DotNetCore.git"
 
-gitUrl="/home/ubuntu/mygit/albert.demo"
+gitUrl=${workdir}"/mygit/albert.demo"
 
-localTargetProject="/home/ubuntu/mygit/albert.demo/Albert.Demo/Albert.Demo.Web"
+localTargetProject=${workdir}"/mygit/albert.demo/Albert.Demo/Albert.Demo.Web"
 
 localPublishPath="/var/www/albertdemo"
 
