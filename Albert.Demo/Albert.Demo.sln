@@ -27,6 +27,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.EntityFramework
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.EntityFrameworkCore", "Albert.EntityFrameworkCore\Albert.EntityFrameworkCore.csproj", "{84B28260-10EB-49B8-9F2A-41C0DAB3D4A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{FB4720A8-C013-4F1A-BF34-BED47F15C88B}"
+	ProjectSection(SolutionItems) = preProject
+		doc\configs\albert.demo.conf = doc\configs\albert.demo.conf
+		doc\configs\albertDemo.conf = doc\configs\albertDemo.conf
+		doc\configs\default = doc\configs\default
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shell", "shell", "{640F0099-A921-46A8-937E-FD15677CC39C}"
+	ProjectSection(SolutionItems) = preProject
+		doc\shell\envInitial.sh = doc\shell\envInitial.sh
+		doc\shell\initgitrepository.sh = doc\shell\initgitrepository.sh
+		doc\shell\updateWebGit.sh = doc\shell\updateWebGit.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +78,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2CD42C47-566B-4983-A339-88AC33A98BC5} = {FF5B79BE-C837-44C4-B69C-5C84DAB82A7C}
 		{84B28260-10EB-49B8-9F2A-41C0DAB3D4A5} = {FF5B79BE-C837-44C4-B69C-5C84DAB82A7C}
+		{FB4720A8-C013-4F1A-BF34-BED47F15C88B} = {34829797-E0AE-4E71-822A-E5EC1D15090F}
+		{640F0099-A921-46A8-937E-FD15677CC39C} = {34829797-E0AE-4E71-822A-E5EC1D15090F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E03F9361-2F12-48AF-A335-5579D55F33B7}

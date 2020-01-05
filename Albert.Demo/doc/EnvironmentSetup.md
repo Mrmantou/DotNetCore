@@ -34,7 +34,7 @@ apt install nginx
 ```
 安装完成，在/var目录下生成www文件夹，其权限为：
 
-![Nginxwww](nginxwww.png)
+![Nginxwww](image/nginxwww.png)
 
 配置nginx:
 
