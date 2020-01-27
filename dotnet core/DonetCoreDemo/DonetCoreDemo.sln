@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskYieldDemo", "TaskYieldDemo\TaskYieldDemo.csproj", "{67A22108-7DCA-4880-9322-9F1B20D5EA9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67A22108-7DCA-4880-9322-9F1B20D5EA9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A22108-7DCA-4880-9322-9F1B20D5EA9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A22108-7DCA-4880-9322-9F1B20D5EA9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A22108-7DCA-4880-9322-9F1B20D5EA9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C77402BC-89AE-49D0-BB70-9D476336CFC2}
+	EndGlobalSection
+EndGlobal
