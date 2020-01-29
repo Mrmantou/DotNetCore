@@ -9,9 +9,9 @@ namespace HelloWorldApp
     {
         public static void Main() =>
             new WebHostBuilder()
-            .UseKestrel()
-            .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World")))
-            .Build()
-            .Run();
+                .UseKestrel()
+                .Configure(app => app.Run(context => context.Response.WriteAsync("Hello World")))
+                .Build()
+                .Run();
     }
 }
