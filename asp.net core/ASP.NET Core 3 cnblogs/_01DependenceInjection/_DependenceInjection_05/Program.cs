@@ -21,7 +21,10 @@ namespace _DependenceInjection_05
             //InstanceLifeCycle();
             //Console.WriteLine();
 
-            InstanceLifeCycleDispose();
+            //InstanceLifeCycleDispose();
+            //Console.WriteLine();
+
+            new ServiceRegisterVerification().Test();
             Console.WriteLine();
 
             Console.WriteLine("press any key to exit......");
