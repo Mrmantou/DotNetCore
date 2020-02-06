@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_DependenceInjection_02_3",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_DependenceInjection_03", "_DependenceInjection_03\_DependenceInjection_03.csproj", "{1C9CFD14-1BB4-4D4D-94BF-849DD76E9E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_DependenceInjection_04", "_DependenceInjection_04\_DependenceInjection_04.csproj", "{3C84904E-CD33-4DB3-A490-69D5E3DB6FC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_DependenceInjection_04", "_DependenceInjection_04\_DependenceInjection_04.csproj", "{3C84904E-CD33-4DB3-A490-69D5E3DB6FC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_DependenceInjection_05", "_DependenceInjection_05\_DependenceInjection_05.csproj", "{62EF28A8-8B8B-461F-A0CB-15FEA5990B19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{3C84904E-CD33-4DB3-A490-69D5E3DB6FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C84904E-CD33-4DB3-A490-69D5E3DB6FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C84904E-CD33-4DB3-A490-69D5E3DB6FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62EF28A8-8B8B-461F-A0CB-15FEA5990B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62EF28A8-8B8B-461F-A0CB-15FEA5990B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62EF28A8-8B8B-461F-A0CB-15FEA5990B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62EF28A8-8B8B-461F-A0CB-15FEA5990B19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
