@@ -7,7 +7,7 @@ namespace _DependenceInjection_05
 {
     public class ServiceRegisterVerification
     {
-        public void Test()
+        public void TestValidateScopes()
         {
             var root = new ServiceCollection()
                 .AddSingleton<IFoo, Foo>()
@@ -38,8 +38,14 @@ namespace _DependenceInjection_05
             ResolveService<IBar>(child);
         }
 
+        public void TestValidateOnBuild()
+        {
+
+        }
+
         public interface IFoo { }
         public interface IBar { }
+
         public class Foo : IFoo
         {
             public IBar Bar { get; }
