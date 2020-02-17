@@ -23,8 +23,13 @@ namespace WebApp
         {
             app.Use(async (context, next) =>
             {
-                await context.Response.WriteAsync("Middlerware begin");
+                await context.Response.WriteAsync("Middleware begin");
+                await next();
+                await context.Response.WriteAsync("Middleware End");
             });
+
+            //app.UseMiddleware<TestMiddleware>();
+            app.UseTest();
 
 
             app.Run(async context =>
