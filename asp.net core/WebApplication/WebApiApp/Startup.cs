@@ -16,6 +16,7 @@ namespace WebApiApp
 {
     public class Startup
     {
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -44,8 +45,9 @@ namespace WebApiApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<AppSetting> appOptions, IOptions<CustomSetting> customOptions)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<AppSetting> appOptions, IOptions<CustomSetting> customOptions, ILogger<Startup> logger)
         {
+            logger.LogDebug("hello debug");
             app.Run(async context =>
             {
                 var connStr = Configuration["ConnectionString"];

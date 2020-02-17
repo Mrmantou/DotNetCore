@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace WebApiApp
 {
@@ -21,6 +22,11 @@ namespace WebApiApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                    webBuilder.ConfigureLogging(builder =>
+                    {
+                        builder.ClearProviders();
+                    });
+                })
+                .UseNLog();
     }
 }
