@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Albert.Demo.EntityFramework.Sqlite.Mapping
 {
-    class UrlNavMap : AlbertEntityTypeConfiguration<UrlNav>
+    class UrlNavMap : IEntityTypeConfiguration<UrlNav>
     {
-        public override void Configure(EntityTypeBuilder<UrlNav> builder)
+        public void Configure(EntityTypeBuilder<UrlNav> builder)
         {
             builder.ToTable("UrlNavs");
             builder.HasKey(u => u.Id);

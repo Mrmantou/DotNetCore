@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Albert.Demo.EntityFramework.Sqlite.Mapping
 {
-    class FriendMap : AlbertEntityTypeConfiguration<Friend>
+    class FriendMap : IEntityTypeConfiguration<Friend>
     {
-        public override void Configure(EntityTypeBuilder<Friend> builder)
+        public void Configure(EntityTypeBuilder<Friend> builder)
         {
             builder.ToTable("Friends");
             builder.HasKey(f => f.Id);
