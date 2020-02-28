@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcAppService";
+
+package greet;
+
+
+//define api
+service MyGrpcService{
+	rpc Classes(MyRequest) returns(MyResponse);
+}
+
+message MyRequest{
+	string name = 1;// firt property
+}
+
+message MyResponse{
+	string message = 1;
+}
