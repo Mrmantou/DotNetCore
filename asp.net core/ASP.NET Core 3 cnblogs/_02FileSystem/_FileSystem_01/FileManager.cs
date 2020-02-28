@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace _FileSystem_01
 {
@@ -30,6 +32,18 @@ namespace _FileSystem_01
                 }
                 indent--;
             }
+        }
+
+        public async Task<string> ReadAllTextAsync(string path)
+        {
+            byte[] buffer;
+            using (Stream stream = fileProvider.GetFileInfo(path).CreateReadStream())
+            {
+                buffer = new byte[stream.Length];
+                await stream.ReadAsync(buffer, 0, buffer.Length);
+            }
+
+            return Encoding.Default.GetString(buffer);
         }
     }
 }
