@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Primitives;
 using System;
+using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace _FileSystem_01
@@ -17,7 +20,10 @@ namespace _FileSystem_01
             await ReadFileContent();
 
             Console.WriteLine("\nEmbedded File:");
-           await EmbeddedFile();
+            await EmbeddedFile();
+
+            Console.WriteLine("\nFile Change Watch:");
+            await FileChange();
 
             Console.WriteLine("press any key to exit......");
             Console.ReadKey();
@@ -62,6 +68,30 @@ namespace _FileSystem_01
                   .ReadAllTextAsync("data.txt");
 
             Console.WriteLine(content);
+        }
+
+        static async Task FileChange()
+        {
+            var path = AppContext.BaseDirectory;
+            IFileProvider fileProvider = new PhysicalFileProvider(path);
+            ChangeToken.OnChange(() => fileProvider.Watch("test.txt"), () => LoadFileAsync(fileProvider));
+
+            int i = 10;
+            while (i-- > 0)
+            {
+                File.WriteAllText("test.txt", DateTime.Now.ToString());
+                Task.Delay(5000).Wait();
+            }
+        }
+
+        private static async void LoadFileAsync(IFileProvider fileProvider)
+        {
+            using (Stream stream = fileProvider.GetFileInfo("test.txt").CreateReadStream())
+            {
+                byte[] buffer = new byte[stream.Length];
+                await stream.ReadAsync(buffer, 0, buffer.Length);
+                Console.WriteLine(Encoding.ASCII.GetString(buffer));
+            }
         }
     }
 }
