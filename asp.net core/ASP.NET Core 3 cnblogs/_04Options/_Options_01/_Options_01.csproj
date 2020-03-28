@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <None Remove="profile.json" />
+    <None Remove="profiles.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="profiles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="profile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

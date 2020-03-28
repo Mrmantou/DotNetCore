@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
+using System.Diagnostics;
 
 namespace _Options_01
 {
@@ -9,9 +10,71 @@ namespace _Options_01
     {
         static void Main(string[] args)
         {
+            OptiosBindDemo();
+            Console.WriteLine();
+            OptionsNameBindDemo();
+            Console.WriteLine();
+            OptiosBindDemoReload();
+            OptionsNameBindDemoReload();
+
+            Console.WriteLine("press any key to exit......");
+            Console.ReadKey();
+
+        }
+
+        private static void OptionsNameBindDemo()
+        {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("profile.json")
-                .Build();
+                            .AddJsonFile("profiles.json")
+                            .Build();
+
+            var serviceProvider = new ServiceCollection()
+                .AddOptions()
+                .Configure<Profile>("foo", configuration.GetSection("foo"))
+                .Configure<Profile>("bar", configuration.GetSection("bar"))
+                .BuildServiceProvider();
+
+            var optionsAccessor = serviceProvider.GetRequiredService<IOptionsSnapshot<Profile>>();
+
+            Print(optionsAccessor.Get("foo"));
+            Print(optionsAccessor.Get("bar"));
+
+            static void Print(Profile profile)
+            {
+                Console.WriteLine($"Gender: {profile.Gender}");
+                Console.WriteLine($"Age: {profile.Age}");
+                Console.WriteLine($"Email Address: {profile.ContactInfo.EmailAddress}");
+                Console.WriteLine($"Phone No: {profile.ContactInfo.PhoneNo}\n");
+            }
+        }
+
+        private static void OptionsNameBindDemoReload()
+        {
+            var configuration = new ConfigurationBuilder()
+                            .AddJsonFile("profiles.json", optional: false, reloadOnChange: true)
+                            .Build();
+
+            var serviceProvider = new ServiceCollection()
+                .AddOptions()
+                .Configure<Profile>("foo", configuration.GetSection("foo"))
+                .Configure<Profile>("bar", configuration.GetSection("bar"))
+                .BuildServiceProvider()
+                .GetRequiredService<IOptionsMonitor<Profile>>()
+                .OnChange((profile, name) =>
+                {
+                    Console.WriteLine($"Name: {name}");
+                    Console.WriteLine($"Gender: {profile.Gender}");
+                    Console.WriteLine($"Age: {profile.Age}");
+                    Console.WriteLine($"Email Address: {profile.ContactInfo.EmailAddress}");
+                    Console.WriteLine($"Phone No: {profile.ContactInfo.PhoneNo}\n");
+                });
+        }
+
+        private static void OptiosBindDemo()
+        {
+            var configuration = new ConfigurationBuilder()
+                            .AddJsonFile("profile.json")
+                            .Build();
             var profile = new ServiceCollection()
                 .AddOptions()
                 .Configure<Profile>(configuration)
@@ -19,7 +82,29 @@ namespace _Options_01
                 .GetRequiredService<IOptions<Profile>>()
                 .Value;
 
+            Console.WriteLine($"Gender: {profile.Gender}");
+            Console.WriteLine($"Age: {profile.Age}");
+            Console.WriteLine($"Email Address: {profile.ContactInfo.EmailAddress}");
+            Console.WriteLine($"Phone No: {profile.ContactInfo.PhoneNo}");
+        }
 
+        private static void OptiosBindDemoReload()
+        {
+            var configuration = new ConfigurationBuilder()
+                            .AddJsonFile("profile.json", optional: false, reloadOnChange: true)
+                            .Build();
+            var profile = new ServiceCollection()
+                .AddOptions()
+                .Configure<Profile>(configuration)
+                .BuildServiceProvider()
+                .GetRequiredService<IOptionsMonitor<Profile>>()
+                .OnChange(profile =>
+                {
+                    Console.WriteLine($"Gender: {profile.Gender}");
+                    Console.WriteLine($"Age: {profile.Age}");
+                    Console.WriteLine($"Email Address: {profile.ContactInfo.EmailAddress}");
+                    Console.WriteLine($"Phone No: {profile.ContactInfo.PhoneNo}\n");
+                });
         }
     }
 
