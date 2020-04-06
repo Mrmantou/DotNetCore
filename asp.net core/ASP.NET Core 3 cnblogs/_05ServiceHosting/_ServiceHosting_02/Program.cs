@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+using Microsoft.Extensions.Logging;
 
 namespace _ServiceHosting_02
 {
@@ -29,6 +29,9 @@ namespace _ServiceHosting_02
                     .AddSingleton<IHostedService, PerformanceMetricsCollector>()
                     .AddOptions()
                     .Configure<MetricsCollectionOptions>(context.Configuration.GetSection("MetricsCollection")))
+                .ConfigureLogging((context, builder) => builder
+                    .AddConfiguration(context.Configuration.GetSection("Logging"))
+                    .AddConsole())
                 .Build()
                 .Run();
         }
