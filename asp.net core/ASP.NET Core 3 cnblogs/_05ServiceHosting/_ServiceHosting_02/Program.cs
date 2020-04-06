@@ -7,11 +7,20 @@ namespace _ServiceHosting_02
 {
     class Program
     {
+        /*
+         * dotnet run         //default: production
+         * dotnet run /environment=development
+         * dotnet run /environment=staging
+         * dotnet run /environment=production
+         */
         static void Main(string[] args)
         {
             var collector = new FakeMetricsCollector();
             new HostBuilder()
-                .ConfigureAppConfiguration(builder => builder.AddJsonFile("appsettings.json"))
+                .ConfigureHostConfiguration(builder => builder.AddCommandLine(args))
+                .ConfigureAppConfiguration((context, builder) => builder
+                    .AddJsonFile(path: "appsettings.json", optional: false)
+                    .AddJsonFile(path: $"appsettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true))
                 .ConfigureServices((context, services) => services
                     .AddSingleton<IProcessorMetricsCollector>(collector)
                     .AddSingleton<IMemoryMetricsCollector>(collector)

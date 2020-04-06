@@ -7,9 +7,17 @@
 
   <ItemGroup>
     <None Remove="appSettings.json" />
+    <None Remove="appSettings.production.json" />
+    <None Remove="appSettings.staging.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appSettings.production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appSettings.staging.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="appSettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
