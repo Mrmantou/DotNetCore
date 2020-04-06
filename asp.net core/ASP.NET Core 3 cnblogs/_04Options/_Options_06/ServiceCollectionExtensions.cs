@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
+using System;
 using System.IO;
 
 namespace _Options_06
@@ -18,5 +19,9 @@ namespace _Options_06
 
             return services.AddSingleton<IConfigureOptions<TOptions>>(new JsonFileConfigureOptions<TOptions>(name, filePath, fileProvider));
         }
+
+        public static IServiceCollection Configure<TOptions>(this IServiceCollection services, string name, TimeSpan refreshInterval) => services.AddSingleton<IOptionsChangeTokenSource<TOptions>>(new TimedRefreshTokenSource<TOptions>(refreshInterval, name));
+
+        public static IServiceCollection Configure<TOptions>(this IServiceCollection services, TimeSpan refreshInterval) => services.Configure<TOptions>(Options.DefaultName, refreshInterval);
     }
 }

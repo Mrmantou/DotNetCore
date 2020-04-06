@@ -10,6 +10,34 @@ namespace _Options_06
     {
         static void Main(string[] args)
         {
+            //OptionsExtentionDemo();
+
+
+            TimeRefreshDemo();
+        }
+
+        private static void TimeRefreshDemo()
+        {
+            var random = new Random();
+            var optionsMonitor = new ServiceCollection()
+                .AddOptions()
+                .Configure<FoobarOptions>(TimeSpan.FromSeconds(1))
+                .Configure<FoobarOptions>(foobar =>
+                {
+                    foobar.Foo = random.Next(10, 100);
+                    foobar.Bar = random.Next(10, 100);
+                })
+                .BuildServiceProvider()
+                .GetRequiredService<IOptionsMonitor<FoobarOptions>>();
+
+            optionsMonitor.OnChange(foobar => Console.WriteLine($"[{DateTime.Now}] {foobar}"));
+
+            Console.WriteLine("press any key to exit......");
+            Console.ReadKey();
+        }
+
+        private static void OptionsExtentionDemo()
+        {
             var foobar1 = new FoobarOptions(1, 1);
             var foobar2 = new FoobarOptions(2, 2);
             var foobar3 = new FoobarOptions(3, 3);
