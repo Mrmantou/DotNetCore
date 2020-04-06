@@ -25,7 +25,7 @@ namespace _ServiceHosting_01
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            scheduler.Dispose();
+            scheduler?.Dispose();
             return Task.CompletedTask;
         }
     }
