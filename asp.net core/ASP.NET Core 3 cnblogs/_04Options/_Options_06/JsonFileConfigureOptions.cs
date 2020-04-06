@@ -68,8 +68,52 @@ namespace _Options_06
                 }
             }
 
-        }
+            foreach (var property in type.GetProperties())
+            {
+                if (property.IsSpecialName || property.GetMethod == null || property.Name == "Item" || property.DeclaringType != type)
+                {
+                    continue;
+                }
 
+                var src = property.GetValue(from);
+                var propertyType = src?.GetType() ?? property.PropertyType;
+
+                if ((propertyType.IsValueType || src is string || src == null) && property.SetMethod != null)
+                {
+                    property.SetValue(to, src);
+                    continue;
+                }
+
+                var dest = property.GetValue(to);
+                if (null != dest && !propertyType.IsArray())
+                {
+                    Bind(src, dest);
+                    continue;
+                }
+
+                if (property.SetMethod != null)
+                {
+                    var destType = propertyType.IsDictionary()
+                        ? typeof(Dictionary<,>).MakeGenericType(propertyType.GetGenericArguments())
+                        : propertyType.IsArray()
+                                ? typeof(List<>).MakeGenericType(propertyType.GetElementType())
+                                : propertyType.IsCollection()
+                                        ? typeof(List<>).MakeGenericType(propertyType.GetGenericArguments())
+                                        : propertyType;
+
+                    dest = Activator.CreateInstance(destType);
+                    Bind(src, dest);
+
+                    if (propertyType.IsArray())
+                    {
+                        IList list = (IList)dest;
+                        dest = Array.CreateInstance(propertyType.GetElementType(), list.Count);
+                        list.CopyTo((Array)dest, 0);
+                    }
+                    property.SetValue(to, src);
+                }
+            }
+        }
     }
 
     internal static class Extentions
@@ -78,6 +122,6 @@ namespace _Options_06
 
         public static bool IsCollection(this Type type) => typeof(IEnumerable).IsAssignableFrom(type) && type != typeof(string);
 
-        public static bool IsArry(this Type type) => typeof(Array).IsAssignableFrom(type);
+        public static bool IsArray(this Type type) => typeof(Array).IsAssignableFrom(type);
     }
 }
