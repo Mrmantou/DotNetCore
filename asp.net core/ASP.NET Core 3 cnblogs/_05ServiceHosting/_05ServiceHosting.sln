@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_ServiceHosting_01", "_ServiceHosting_01\_ServiceHosting_01.csproj", "{EACC3575-B8D2-44CD-9BBC-19506786A928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_ServiceHosting_02", "_ServiceHosting_02\_ServiceHosting_02.csproj", "{B193F0F4-2BB5-4613-B35F-47D00555A2CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_ServiceHosting_02", "_ServiceHosting_02\_ServiceHosting_02.csproj", "{B193F0F4-2BB5-4613-B35F-47D00555A2CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_ServiceHosting_03", "_ServiceHosting_03\_ServiceHosting_03.csproj", "{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B193F0F4-2BB5-4613-B35F-47D00555A2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B193F0F4-2BB5-4613-B35F-47D00555A2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B193F0F4-2BB5-4613-B35F-47D00555A2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
