@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_ServiceHosting_01", "_Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_ServiceHosting_02", "_ServiceHosting_02\_ServiceHosting_02.csproj", "{B193F0F4-2BB5-4613-B35F-47D00555A2CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_ServiceHosting_03", "_ServiceHosting_03\_ServiceHosting_03.csproj", "{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_ServiceHosting_03", "_ServiceHosting_03\_ServiceHosting_03.csproj", "{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_ServiceHosting_05", "_ServiceHosting_05\_ServiceHosting_05.csproj", "{F7A0B56F-BCDA-4160-9C9B-78409F210935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEDD037C-DCC8-43EC-9866-CD93D04D3DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A0B56F-BCDA-4160-9C9B-78409F210935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A0B56F-BCDA-4160-9C9B-78409F210935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A0B56F-BCDA-4160-9C9B-78409F210935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A0B56F-BCDA-4160-9C9B-78409F210935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
