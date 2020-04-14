@@ -11,6 +11,7 @@ namespace _ServiceHosting_06
         {
             new HostBuilder()
                 .ConfigureHostConfiguration(builder => builder.AddCommandLine(args))
+                //.ConfigureHostConfiguration(builder => builder.AddJsonFile("hostEnvironment.json"))
                 .ConfigureServices(services => services.AddHostedService<FakeHostedService>())
                 .Build()
                 .Run();
