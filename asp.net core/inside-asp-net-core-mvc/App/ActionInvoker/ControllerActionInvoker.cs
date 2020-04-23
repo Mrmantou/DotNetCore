@@ -11,7 +11,7 @@ namespace App
         public ActionContext ActionContext { get; }
         public ControllerActionInvoker(ActionContext actionContext) => ActionContext = actionContext;
 
-        public Task InvokeAsync()
+        public async Task InvokeAsync()
         {
             var actionDescriptor = ActionContext.ActionDescriptor as ControllerActionDescriptor;
             var controllerType = actionDescriptor.ControllerType;
@@ -23,7 +23,39 @@ namespace App
             }
             var actionMethod = actionDescriptor.Method;
             var result = actionMethod.Invoke(controllerInstance, new object[0]);
-            return result is Task task ? task : Task.CompletedTask;
+            var actionResult = await ToActionResultAsync(result);
+            await actionResult.ExecuteResultAsync(ActionContext);
+        }
+
+        private async Task<IActionResult> ToActionResultAsync(object result)
+        {
+            if (result == null)
+            {
+                return NullActionResult.Instance;
+            }
+
+            if (result is Task<IActionResult> taskOfActionResult)
+            {
+                return await taskOfActionResult;
+            }
+
+            if (result is ValueTask<IActionResult> valueTaskOfActionResult)
+            {
+                return await valueTaskOfActionResult;
+            }
+
+            if (result is IActionResult actionResult)
+            {
+                return actionResult;
+            }
+
+            if (result is Task task)
+            {
+                await task;
+                return NullActionResult.Instance;
+            }
+
+            throw new InvalidOperationException("Action method's return value is invalid.");
         }
     }
 }

@@ -30,8 +30,22 @@ namespace App
 
     public class FoobarController : Controller
     {
-        [HttpGet("/foo")]
-        public Task FooAsync() => ActionContext.HttpContext.Response.WriteAsync(nameof(FooAsync));
-        public Task BarAsync() => ActionContext.HttpContext.Response.WriteAsync(nameof(BarAsync));
+        private static readonly string html =
+@"<html>
+<head>
+    <title>Hello</title>
+</head>
+<body>
+    <p>Hello World!</p>
+</body>
+</html>";
+
+        [HttpGet("/{foo}")]
+        public Task<IActionResult> FooAsync()
+        {
+            return Task.FromResult<IActionResult>(new ContentResult(html, "text/html"));
+        }
+
+        public IActionResult Bar() => new ContentResult(html, "text/plain");
     }
 }
