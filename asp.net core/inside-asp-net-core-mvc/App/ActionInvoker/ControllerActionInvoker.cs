@@ -34,10 +34,40 @@ namespace App
                 controller.ActionContext = ActionContext;
             }
             var actionMethod = actionDescriptor.Method;
-            var returnValue = actionMethod.Invoke(controllerInstance, new object[0]);
+            var arguments = await BindArgumentsAsync(actionMethod);
+            var returnValue = actionMethod.Invoke(controllerInstance, arguments);
             var mapper = requestService.GetRequiredService<IActionResultTypeMapper>();
             var actionResult = await ToActionResultAsync(returnValue, actionMethod.ReturnType, mapper);
             await actionResult.ExecuteResultAsync(ActionContext);
+        }
+
+        private async Task<object[]> BindArgumentsAsync(MethodInfo methodInfo)
+        {
+            var parameters = methodInfo.GetParameters();
+            if (parameters.Length == 0)
+            {
+                return new object[0];
+            }
+
+            var arguments = new object[parameters.Length];
+            for (int index = 0; index < arguments.Length; index++)
+            {
+                var parameter = parameters[index];
+                var metadata = ModelMetadata.CreateByParameter(parameter);
+                var requestService = ActionContext.HttpContext.RequestServices;
+                var valueProviderFacrories = requestService.GetServices<IValueProviderFactory>();
+                var valueProvider = new CompositeValueProvider(valueProviderFacrories.Select(i => i.CreateValueProvider(ActionContext)));
+
+                var modelBinderFactory = requestService.GetRequiredService<IModelBinderFactory>();
+                var context = valueProvider.ContainsPrefix(parameter.Name)
+                    ? new ModelBindingContext(ActionContext, parameter.Name, metadata, valueProvider)
+                    : new ModelBindingContext(ActionContext, "", metadata, valueProvider);
+                var binder = modelBinderFactory.CreateBinder(metadata);
+                await binder.BindAsync(context);
+                arguments[index] = context.Model;
+            }
+
+            return arguments;
         }
 
         private async Task<IActionResult> ToActionResultAsync(object result)
