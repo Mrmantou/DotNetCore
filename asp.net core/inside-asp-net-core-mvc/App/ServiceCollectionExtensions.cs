@@ -14,7 +14,8 @@ namespace App
                 .AddSingleton<IActionDescriptorCollectionProvider, DefaultActionDescriptorCollectionProvider>()
                 .AddSingleton<IActionInvokerFactory, ActionInvokerFactory>()
                 .AddSingleton<IActionDescriptorProvider, ControllerActionDescriptorProvider>()
-                .AddSingleton<ControllerActionEndpointDataSource, ControllerActionEndpointDataSource>();
+                .AddSingleton<ControllerActionEndpointDataSource, ControllerActionEndpointDataSource>()
+                .AddSingleton<IActionResultTypeMapper, ActionResultTypeMapper>();
         }
     }
 }

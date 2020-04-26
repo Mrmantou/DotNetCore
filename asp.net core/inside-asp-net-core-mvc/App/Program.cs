@@ -40,12 +40,15 @@ namespace App
 </body>
 </html>";
 
-        [HttpGet("/{foo}")]
-        public Task<IActionResult> FooAsync()
-        {
-            return Task.FromResult<IActionResult>(new ContentResult(html, "text/html"));
-        }
+        [HttpGet("/foo")]
+        public Task<ContentResult> FooAsync() => Task.FromResult(new ContentResult(html, "text/html"));
 
-        public IActionResult Bar() => new ContentResult(html, "text/plain");
+        [HttpGet("/bar")]
+        public ValueTask<ContentResult> BarAsync() => new ValueTask<ContentResult>(new ContentResult(html, "text/html"));
+
+        [HttpGet("/baz")]
+        public Task<string> BazAsync() => Task.FromResult(html);
+
+        public ValueTask<string> QuxAsync() => new ValueTask<string>(html);
     }
 }
