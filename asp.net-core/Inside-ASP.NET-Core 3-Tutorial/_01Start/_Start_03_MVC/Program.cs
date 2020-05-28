@@ -10,14 +10,19 @@ namespace _Start_03_MVC
     {
         static void Main(string[] args)
         {
+            //Host.CreateDefaultBuilder()
+            //    .ConfigureWebHostDefaults(builder => builder
+            //        .ConfigureServices(services => services
+            //            .AddRouting()
+            //            .AddControllersWithViews())
+            //        .Configure(app => app
+            //            .UseRouting() //Adds a Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware middleware
+            //            .UseEndpoints(endpoints => endpoints.MapControllers()))) //Adds a Microsoft.AspNetCore.Routing.EndpointMiddleware middleware 
+            //    .Build()
+            //    .Run();
+
             Host.CreateDefaultBuilder()
-                .ConfigureWebHostDefaults(builder => builder
-                    .ConfigureServices(services => services
-                        .AddRouting()
-                        .AddControllersWithViews())
-                    .Configure(app => app
-                        .UseRouting() //Adds a Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware middleware
-                        .UseEndpoints(endpoints => endpoints.MapControllers()))) //Adds a Microsoft.AspNetCore.Routing.EndpointMiddleware middleware 
+                .ConfigureWebHostDefaults(builder => builder.UseStartup<Startup>())
                 .Build()
                 .Run();
         }
