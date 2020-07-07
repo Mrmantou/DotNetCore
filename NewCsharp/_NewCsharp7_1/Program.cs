@@ -17,14 +17,14 @@ namespace _NewCsharp7_1
         /// <returns></returns>
         static async Task Main(string[] args)
         {
+            #region Default literal expressions
+            Func<string, bool> whereClause = default;
+            #endregion
+
             await Task.Delay(100);
 
             Console.WriteLine("Hello World!");
         }
-
-        #region Default literal expressions
-        Func<string, bool> whereClause = default;
-        #endregion
 
         private void InferredTupleElementNames()
         {
