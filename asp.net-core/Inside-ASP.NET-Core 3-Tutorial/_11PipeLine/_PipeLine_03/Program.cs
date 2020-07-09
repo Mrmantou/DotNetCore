@@ -23,8 +23,10 @@ namespace _PipeLine_03
     {
         public void ConfigureServices(IServiceCollection services)
         {
+#pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var provider = services.BuildServiceProvider();
-            foreach (var service in services)
+#pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            foreach (var service in services.OrderBy(s=>s.ServiceType.Name))
             {
                 var serviceTypeName = GetName(service.ServiceType);
                 var implementationType = service.ImplementationType
