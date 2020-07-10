@@ -7,19 +7,39 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
-namespace _PipeLine_07
+namespace _PipeLine_08
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Environment.SetEnvironmentVariable("ASPNETCORE_FOOBAR:FOO", "Foo");
-            Environment.SetEnvironmentVariable("ASPNETCORE_FOOBAR:BAR", "Bar");
-            Environment.SetEnvironmentVariable("ASPNETCORE_Baz", "Baz");
+            var configuration = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string>
+            {
+                ["FOOBAR:FOO"] = "Foo",
+                ["FOOBAR:BAR"] = "Bar",
+                ["Baz"] = "Baz"
+            }).Build();
 
             Host.CreateDefaultBuilder()
-                .ConfigureWebHostDefaults(builder => builder.UseStartup<Startup>())
+                .ConfigureWebHostDefaults(builder => builder
+                    // --modify config
+                    //.UseSetting("FOOBAR:FOO", "Foo")
+                    //.UseSetting("FOOBAR:BAR", "Bar")
+                    //.UseSetting("Baz", "Baz")
+                    // --combine config
+                    //.UseConfiguration(configuration)
+                    // --register config source
+                    .ConfigureAppConfiguration(config => config
+                        .AddInMemoryCollection(new Dictionary<string, string>
+                        {
+                            ["FOOBAR:FOO"] = "Foo",
+                            ["FOOBAR:BAR"] = "Bar",
+                            ["Baz"] = "Baz"
+                        }))
+                    .UseSetting("urls", "http://0.0.0.0:8888;http://0.0.0.0:9999")
+                    .UseStartup<Startup>())
                 .Build()
                 .Run();
         }
