@@ -1,6 +1,6 @@
 using System;
 
-namespace Albert.Demo.WebApi
+namespace Albert.Demo.WebApi.Dto
 {
     public class WeatherForecast
     {

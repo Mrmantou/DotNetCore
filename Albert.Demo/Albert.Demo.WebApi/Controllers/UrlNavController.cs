@@ -82,21 +82,5 @@ namespace Albert.Demo.WebApi.Controllers
                           urlNav.UpdateTime
                       });
         }
-
-        public class TimeDto
-        {
-            /// <summary>
-            /// 标题
-            /// </summary>
-            public string Title { get; set; }
-            /// <summary>
-            /// 创建时间
-            /// </summary>
-            public DateTime CreateTime { get; set; }
-            /// <summary>
-            /// 更新时间
-            /// </summary>
-            public DateTime UpdateTime { get; set; }
-        }
     }
 }

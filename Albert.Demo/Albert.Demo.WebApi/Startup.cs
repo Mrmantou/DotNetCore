@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Albert.Demo.Application.Friends;
 using Albert.Demo.Application.UrlNavs;
 using Albert.Demo.EntityFramework.Sqlite;
+using Albert.Demo.WebApi.Middleware;
 using Albert.Domain.Repositories;
 using Albert.Domain.Uow;
 using Albert.EntityFrameworkCore.Uow;
@@ -69,7 +70,12 @@ namespace Albert.Demo.WebApi
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Albert Demo WebApi API v1");
             });
 
-            app.UseHttpsRedirection();
+            if (!env.IsDevelopment())
+            {
+                app.UseHttpsRedirection();
+            }
+
+            app.UseMiddleware<LogMiddleware>();
 
             app.UseRouting();
 
