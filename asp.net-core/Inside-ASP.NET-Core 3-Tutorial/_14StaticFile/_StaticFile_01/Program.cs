@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -14,8 +15,13 @@ namespace _StaticFile_01
             var path = Path.Combine(Directory.GetCurrentDirectory(), "doc");
             var fileProvider = new PhysicalFileProvider(path);
 
+            //// add file extention mapping
+            //var contentTypeProvider = new FileExtensionContentTypeProvider();
+            //contentTypeProvider.Mappings.Add(".img", "image/ipg");
+
             var fileOptions = new StaticFileOptions
             {
+                //ContentTypeProvider = contentTypeProvider,
                 FileProvider = fileProvider,
                 RequestPath = "/documents"
             };
