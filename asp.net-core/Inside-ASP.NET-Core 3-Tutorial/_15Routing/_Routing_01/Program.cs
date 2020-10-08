@@ -28,6 +28,18 @@ namespace _Routing_01
             await RendWeatherAsync(context, report);
         }
 
+        public static async Task WeatherForecastWithDefaultValue(HttpContext context)
+        {
+            var routeValues = context.GetRouteData().Values;
+            var city = routeValues.TryGetValue("city", out var v1) ? (string)v1 : "010";
+            city = cities[city];
+
+            int days = routeValues.TryGetValue("days", out var v2) ? int.Parse(v2.ToString()) : 4;
+            var report = new WeatherReport(city, days);
+
+            await RendWeatherAsync(context, report);
+        }
+
         private static async Task RendWeatherAsync(HttpContext context, WeatherReport report)
         {
             context.Response.ContentType = "text/html;charset=utf-8";
@@ -36,7 +48,7 @@ namespace _Routing_01
 
             foreach (var item in report.WeatherInfos)
             {
-                await context.Response.WriteAsync($"{item.Key.ToString("yyyy-MM-dd")}:");
+                await context.Response.WriteAsync($"{item.Key:yyyy-MM-dd}:");
                 await context.Response.WriteAsync($"{item.Value.Condition}({item.Value.LowTemperature}°C ~ {item.Value.HighTemperature}°C)<br/><br/>");
             }
 
@@ -46,7 +58,8 @@ namespace _Routing_01
         static void Main(string[] args)
         {
             // var template = @"weather/{city}/{days}";
-            var template = @"weather/{city:regex(^0\d{{2,3}}$)}/{days:int:range(1,4)}"; // inline constraint
+            // var template = @"weather/{city:regex(^0\d{{2,3}}$)}/{days:int:range(1,4)}"; // inline constraint
+            var defaultTemplate = @"weather/{city?}/{days?}";
 
             Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(builder => builder
@@ -54,7 +67,7 @@ namespace _Routing_01
                     .Configure(app => app
                         .UseRouting()
                         .UseEndpoints(endpoints =>
-                            endpoints.MapGet(template, WeatherForecast)))) //weather/{city}/{days}
+                            endpoints.MapGet(defaultTemplate, WeatherForecastWithDefaultValue)))) //weather/{city}/{days}
                 .Build()
                 .Run();
         }
