@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34829797-E0AE-4E71-822A-E5EC1D15090F}"
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
+		buildanddeplayweb.sh = buildanddeplayweb.sh
 		Dockerfile = Dockerfile
 		doc\EnvironmentSetup.md = doc\EnvironmentSetup.md
 		doc\MultiplePoint.md = doc\MultiplePoint.md
@@ -41,7 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shell", "shell", "{640F0099
 		doc\shell\updateWebGit.sh = doc\shell\updateWebGit.sh
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albert.Demo.WebApi", "Albert.Demo.WebApi\Albert.Demo.WebApi.csproj", "{CF9E3065-13D5-4FB4-A88D-A807982DC65E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albert.Demo.WebApi", "Albert.Demo.WebApi\Albert.Demo.WebApi.csproj", "{CF9E3065-13D5-4FB4-A88D-A807982DC65E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
