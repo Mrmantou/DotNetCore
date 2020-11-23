@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryKeywards", "QueryKeywards\QueryKeywards.csproj", "{1945160D-07CC-4ECB-A9D0-9D8C37661DFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1945160D-07CC-4ECB-A9D0-9D8C37661DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1945160D-07CC-4ECB-A9D0-9D8C37661DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1945160D-07CC-4ECB-A9D0-9D8C37661DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1945160D-07CC-4ECB-A9D0-9D8C37661DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20F1ACCC-77AB-4623-85D2-761FFA83FEB0}
+	EndGlobalSection
+EndGlobal
