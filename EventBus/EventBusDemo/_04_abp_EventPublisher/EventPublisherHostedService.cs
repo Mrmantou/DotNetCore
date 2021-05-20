@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 
-namespace _03_abp_LocalDistributedEventBus
+namespace _04_abp_EventPublisher
 {
-    public class LocalDistributedEventBusHostedService : IHostedService
+    public class EventPublisherHostedService : IHostedService
     {
         private readonly IAbpApplicationWithExternalServiceProvider _application;
         private readonly IServiceProvider _serviceProvider;
         private readonly HelloWorldService _helloWorldService;
 
-        public LocalDistributedEventBusHostedService(
+        public EventPublisherHostedService(
             IAbpApplicationWithExternalServiceProvider application,
             IServiceProvider serviceProvider,
             HelloWorldService helloWorldService)
