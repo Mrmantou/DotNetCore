@@ -41,7 +41,7 @@ namespace _14_ManyToMany
 
     public class Tag
     {
-        public string TagId { get; set; }
+        public string TagId { get; set; } = Guid.NewGuid().ToString();
         public string TagName { get; set; }
 
         public ICollection<Post> Posts { get; set; }
