@@ -9,7 +9,7 @@ using _16_ManyToMany;
 namespace _16_ManyToMany.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210527110706_Init")]
+    [Migration("20210528054710_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

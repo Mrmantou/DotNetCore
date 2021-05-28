@@ -35,7 +35,7 @@ namespace _16_ManyToMany
 
             builder.HasKey(m => m.Id);
             builder.Property(m => m.Id).ValueGeneratedOnAdd();
-            builder.HasOne(m => m.Article).WithMany().HasForeignKey(m=>m.ArticleId);
+            builder.HasOne(m => m.Article).WithMany().HasForeignKey(m => m.ArticleId);
             builder.HasOne(m => m.RelatedArticle).WithMany().HasForeignKey(m => m.RelatedArticleId);
         }
     }
@@ -48,7 +48,7 @@ namespace _16_ManyToMany
             builder.HasKey(m => m.ArticleId);
 
             builder.HasMany(p => p.RelatedArticles)
-                   .WithMany(t => t.RelatedArticles)
+                   .WithMany(t => t.Articles)
                    .UsingEntity<ArticleRelateArticle>(
                         j => j.HasOne(m => m.Article).WithMany().HasForeignKey(m => m.RelatedArticleId),
                         j => j.HasOne(m => m.RelatedArticle).WithMany().HasForeignKey(m => m.ArticleId));
@@ -70,6 +70,7 @@ namespace _16_ManyToMany
         public string ArticleId { get; set; } = Guid.NewGuid().ToString();
         public string Title { get; set; }
 
+        public List<Article> Articles { get; set; } = new List<Article>();
         public List<Article> RelatedArticles { get; set; } = new List<Article>();
     }
 }
