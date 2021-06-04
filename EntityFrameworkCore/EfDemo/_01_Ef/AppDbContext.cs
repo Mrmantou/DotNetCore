@@ -19,6 +19,23 @@ namespace _01_Ef
         {
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Activity>(builder => {
+                builder.ToTable(nameof(Activity));
+                builder.HasKey(m => m.Id);
+                builder.Property(m => m.Id).ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<WxGroup>(builder => {
+                builder.ToTable(nameof(WxGroup));
+                builder.HasKey(m => m.Id);
+                builder.Property(m => m.Id).ValueGeneratedOnAdd();
+
+                builder.HasOne<Activity>().WithMany(m => m.WxGroups).HasForeignKey(m => m.ActivityId);
+            });
+        }
     }
 
     public class Blog
@@ -37,5 +54,30 @@ namespace _01_Ef
 
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
+    }
+
+    public class Activity : StringIdEntity
+    {
+        public string Name { get; set; }
+        public string Introduction { get; set; }
+        public string QRCodePath { get; set; }
+
+        public List<WxGroup> WxGroups { get; set; }
+    }
+
+    public class WxGroup : StringIdEntity
+    {
+        public string Name { get; set; }
+        public int VisitedCount { get; set; }
+        public string QRCodePath { get; set; }
+
+        public string ActivityId { get; set; }
+    }
+
+    public class StringIdEntity
+    {
+        public string Id { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime? UpdateTime { get; set; }
     }
 }
