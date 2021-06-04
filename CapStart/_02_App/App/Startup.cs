@@ -51,6 +51,8 @@ namespace App
                         options.Password = configuration["Cap:EventBusPassword"];
                     }
                 });
+
+                x.UseDashboard();
             });
 
             services.AddSingleton<TracingDiagnosticProcessorObserver>();
